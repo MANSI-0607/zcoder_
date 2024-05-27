@@ -6,7 +6,6 @@ import Community from './Community'
 import LinkedGitLink from './LinkedGitLink'
 import CodingSite from './CodingSite'
 import Skills from './Skills'
-import HeatMap from './HeatMap'
 import YourQues from './YourQues'
 import Footer from './Footer'
 // import '../Dasboard.css'
@@ -42,11 +41,7 @@ const MainPage = () => {
         <div className='skills centered'>
           <Skills/>
         </div>
-        
-        <div className='heatmap centered'>
-          <HeatMap/>
-        </div>
-        
+
         <div className='your-ques centered'>
           <YourQues/>
         </div>
