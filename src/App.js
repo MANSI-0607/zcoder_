@@ -1,4 +1,4 @@
-import MainPage from "./components/MainPage";
+
 import "./App.css";
 import React from "react";
 import Home from "./screen/Home";
