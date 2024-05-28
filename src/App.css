@@ -24,10 +24,9 @@
                         'footer';
 }
 
-/* header */
 .header{
 grid-area: header;
-/* background-color: aquamarine; */
+
 display: flex;
 
 }
@@ -48,8 +47,8 @@ body{
   font-weight: 400;
   overflow-x: hidden;
   position: relative;
-  background-color: #121212 !important;
-  color: white !important;
+  background: #363232 !important;
+  color: rgb(0, 0, 0) !important;
 
 }
 
@@ -92,6 +91,7 @@ nav.navbar {
   padding: 18px 0;
   position: fixed;
   width: 100%;
+  
   top: 0;
   z-index: 9999;
   transition:  0.32s ease-in-out;

@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "name": "Pabitra Kumar Behera",
+    "about": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia facilis voluptas voluptatum quam quia? Maiores ut enim ea illo optio quasi illum doloribus nam quibusdam, eius accusamus, eaque incidunt deserunt esse ab. Aspernatur quia earum sunt dolor eveniet doloribus dicta veritatis possimus laborum est! Libero!",
+    "community_stats": {
+      "views": 45,
+      "solutions": 45,
+      "likes": 45,
+      "friends": 45
+    },
+    "languages": ["React", "MongoDB", "Express", "Node"],
+    "Skills": ["C++", "Javascript", "DSA"],
+    "recentQuestions": [
+      "Find Root of the binary Tree",
+      "Binary Tree Find Root of the",
+      "Find Root of theFind Root of the"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Alice Johnson",
+    "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "community_stats": {
+      "views": 120,
+      "solutions": 30,
+      "likes": 75,
+      "friends": 60
+    },
+    "languages": ["Python", "Django", "Flask"],
+    "Skills": ["Python", "Machine Learning", "DSA"],
+    "recentQuestions": [
+      "How to implement a binary search algorithm?",
+      "What is the best way to traverse a graph?",
+      "Difference between DFS and BFS?"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "John Doe",
+    "about": "Enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur.",
+    "community_stats": {
+      "views": 300,
+      "solutions": 100,
+      "likes": 200,
+      "friends": 150
+    },
+    "languages": ["Java", "Spring", "Hibernate"],
+    "Skills": ["Java", "System Design", "DSA"],
+    "recentQuestions": [
+      "How to balance a binary search tree?",
+      "Explain the concept of hashing in data structures.",
+      "What are the different types of heaps?"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Jane Smith",
+    "about": "Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur?",
+    "community_stats": {
+      "views": 210,
+      "solutions": 50,
+      "likes": 110,
+      "friends": 95
+    },
+    "languages": ["JavaScript", "Node.js", "Angular"],
+    "Skills": ["JavaScript", "Front-End Development", "DSA"],
+    "recentQuestions": [
+      "How to find the shortest path in a weighted graph?",
+      "Explain the merge sort algorithm.",
+      "What is dynamic programming and when to use it?"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Michael Brown",
+    "about": "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?",
+    "community_stats": {
+      "views": 150,
+      "solutions": 45,
+      "likes": 80,
+      "friends": 70
+    },
+    "languages": ["Ruby", "Rails", "Sinatra"],
+    "Skills": ["Ruby", "Web Development", "DSA"],
+    "recentQuestions": [
+      "How to detect a cycle in a directed graph?",
+      "What is the difference between a stack and a queue?",
+      "Explain the quicksort algorithm."
+    ]
+  },
+  {
+    "id": 6,
+    "name": "Emily Davis",
+    "about": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.",
+    "community_stats": {
+      "views": 175,
+      "solutions": 60,
+      "likes": 90,
+      "friends": 85
+    },
+    "languages": ["C#", ".NET", "Blazor"],
+    "Skills": ["C#", "Software Architecture", "DSA"],
+    "recentQuestions": [
+      "What are binary trees and how to traverse them?",
+      "Explain the concept of linked lists.",
+      "How to implement a priority queue?"
+    ]
+  }
+]

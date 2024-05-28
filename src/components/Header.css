@@ -1,0 +1,87 @@
+/* Header.css */
+nav.navbar {
+    padding: 18px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 9999;
+    transition: background-color 0.32s ease-in-out, padding 0.32s ease-in-out;
+  }
+  
+  nav.navbar.scrolled {
+    padding: 0px 0;
+    background-color: #121212; /* Desired background color when scrolled */
+  }
+  
+  .logoimg {
+    height: 28px;
+  }
+  
+  .navbar-toggle-icon {
+    width: 24px;
+    height: 17px;
+    background-image: none;
+    position: relative;
+    border-bottom: 2px solid #fff;
+    transition: all 300ms linear;
+    top: -2px;
+  }
+  
+  .navbar-toggle-icon:after,
+  .navbar-toggle-icon:before {
+    width: 24px;
+    position: absolute;
+    height: 2px;
+    background-color: #fff;
+    top: 0;
+    left: 0;
+    content: '';
+    z-index: 2;
+    transition: all 300ms linear;
+  }
+  
+  .navbar-toggle-icon:after {
+    top: 8px;
+  }
+  
+  .navbar-toggler[aria-expanded="true"] .navbar-toggle-icon:after {
+    transform: rotate(45deg);
+    background-color: #fff;
+    height: 2px;
+  }
+  
+  .navbar-toggler[aria-expanded="true"] .navbar-toggle-icon:before {
+    transform: translateY(8px) rotate(-45deg);
+    background-color: #fff;
+    height: 2px;
+  }
+  
+  .navbar-toggler[aria-expanded="true"] .navbar-toggle-icon {
+    border-color: transparent;
+  }
+  
+  .bell-icon a, .profile-icon a {
+    display: inline-block;
+    width: 42px;
+    height: 42px;
+    background: rgba(217, 217, 217, 0.1);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    transition: 0.3s ease-in-out;
+  }
+  
+  .bell-icon a:hover, .profile-icon a:hover {
+    background-color: #ffffff;
+  }
+  
+  .bell-icon img, .profile-icon img {
+    width: 60%;
+    transition: 0.3s ease-in-out;
+  }
+  
+  .bell-icon a:hover img, .profile-icon a:hover img {
+    filter: brightness(0) saturate(100%) invert(0%) sepia(7%) saturate(98%) hue-rotate(346deg) brightness(95%) contrast(86%);
+  }
+  
