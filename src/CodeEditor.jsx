@@ -12,7 +12,7 @@ function CodeEditor() {
         fontSize: "16px",
         formatOnType: true,
         autoClosingBrackets: true,
-        minimap: { scale: 10 }
+        minimap: { scale: 10 },
       }}
     />
   );
