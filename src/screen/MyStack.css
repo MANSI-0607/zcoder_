@@ -1,0 +1,170 @@
+.mystack{
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 65px;
+    padding: 20px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.mystackpost{
+    height: 100vh;
+    width: 95%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    padding: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+.yourpost{
+    border-radius: 7px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin: 10px;
+    padding: 4px;
+    background-color: rgb(226, 250, 200);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    
+}
+.yourpost:hover {
+    cursor: pointer;
+    transition-delay: 1ms;
+    transform: scale(1.002);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25), 0 8px 16px rgba(0, 0, 0, 0.25),
+      inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1);
+  }
+.postdatetime {
+    background-color: #b4ecc0;
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: bold;
+    color: #333;
+    margin: 10px auto; /* Adjust as needed */
+    display: inline-block;
+  }
+.yr_ques{
+    border: 1px solid rgba(0, 0, 0, 0.277);
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-radius: 3px;
+    overflow: hidden;
+    padding: 3px;
+}
+.bottomyrpost{
+    display: flex;
+    width: 100%;
+}
+.pubpri,
+.socialreach,
+.editdelete {
+  display: flex;
+  
+}
+
+.pubpri p,
+.editdelete button {
+  margin-top: 5px;
+  color: #333;
+  font-weight: bold;
+}
+
+.pubpri p:first-child {
+  color: #007bff; /* Blue color for Public */
+}
+
+.pubpri p:last-child {
+  color: #0a601e; /* Green color for Private */
+}
+
+.pubpri{
+    padding: 3px 8px;
+}
+
+.socialreach{
+    margin: 3px 18px;
+    
+}
+.socialreach span{
+    margin: 2px 10px;
+}
+.socialreach img {
+  width: 22px;
+  margin:0 4px;
+
+}
+
+.editdelete {
+  margin: 3px auto;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 10px;
+}
+
+.editdelete button {
+  
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.edityrpost{
+    background-color: #007bff;
+}
+.edityrpost:hover{
+    background-color: #336dac
+}
+
+.deleteyrpost {
+  background-color: #dc3545; /* Red color for delete button */
+}
+.deleteyrpost:hover{
+    background-color: #a32419
+}
+.Library {
+    
+    width: 95%;
+    display: flex;
+    align-items: center;
+  }
+  
+  .Library button {
+    background-color: #046c4f;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 15px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+ 
+  
+  .Library button:hover {
+    background-color: #03966a;
+  }
+  
+  .Library img {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+   transition: background-color 0.3s ease;
+   border: 2px solid black;
+  cursor:pointer;
+  }
+  
+  .Library  img:hover {
+    width: 29px;
+    height: 29px;
+  }
+  

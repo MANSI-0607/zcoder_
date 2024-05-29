@@ -1,5 +1,5 @@
 .AddQuestion {
-    margin-top: 10vh;
+    margin-top: 65px;
     width: 100vw;
     height: 100vh;
     display: flex;
@@ -79,7 +79,7 @@
   }
   
   .QuestionUploadArea {
-    margin-left:3vw;
+    margin-left:2.5vw;
     padding: 2vh;
     width: 90%;
     height: 15vh;
@@ -93,3 +93,4 @@
       inset 0 0 0 1px rgba(255, 255, 255, 0.1);
   }
   
+ 

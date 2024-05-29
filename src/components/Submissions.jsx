@@ -5,7 +5,7 @@ const Submissions = () => {
     <div className="Submissions">
       <div className="owner">
         <p>Submitted by:Pabitra</p>
-        <p>Submitted Timae:19:45</p>
+        <p>Submitted Time:19:45</p>
       </div>
       <div className="submitted_question">Find Root of the Binary Tree Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem quos harum reprehenderit animi, tempora quas obcaecati et facere architecto sunt, nihil doloribus necessitatibus sapiente cum veniam maiores ea ut repellendus temporibus recusandae placeat? Expedita, quasi similique. Nulla hic minus laboriosam aliquam, quas perferendis provident facere!</div>
       <div className="submitted_stats">

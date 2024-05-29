@@ -4,6 +4,7 @@ import Home from "./screen/Home";
 import Header from "./components/Header";
 import AddQuestion from "./screen/AddQuestion";
 import Error from "./components/Error";
+import MyStack from "./screen/MyStack";
 import {
   BrowserRouter as Router,
   Routes,
@@ -22,8 +23,8 @@ function App() {
           {/* <Route path="/explore" component={Explore} /> */}
           <Route path="/addquestion" element={<AddQuestion />} />
           <Route path="/explore" element={<Explore />} />
-          {/* <Route path="/mystack" component={MyStack} />
-      <Route path="/codelive" component={CodeLive} /> */}
+          <Route path="/mystack" element={<MyStack/>} />
+      {/* <Route path="/codelive" component={CodeLive} /> */}
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>
