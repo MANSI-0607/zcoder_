@@ -1,12 +1,12 @@
 import React from 'react'
-import Header from '../components/Header'
+// import Header from '../components/Header'
 import HomeLeft from '../components/HomeLeft'
 import HomeRight from '../components/HomeRight'
 import "./Home.css"
 const Home = () => {
   return (
     <div>
-      <Header/>
+      {/* <Header/> */}
       <div className="home_display">
         <HomeLeft/>
         <HomeRight/>

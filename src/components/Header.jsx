@@ -3,7 +3,7 @@ import { Navbar, Container, Nav } from 'react-bootstrap';
 import logo from '../assets/logo.svg';
 import bellicon from '../assets/notification.svg';
 import profileicon from '../assets/profile.svg';
-
+ import { Link } from "react-router-dom";
 
 const Header = () => {
   const [activeLink, setActiveLink] = useState('home');
@@ -21,6 +21,13 @@ const Header = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+//   const navlinkstyle=({isActive})=>{
+//     return{
+//        textDecoration:isActive?"none":"underline",
+//        color:isActive?"black":"grey"
+//     };
+// };
+
   const onUpdateActiveLink = (value) => {
     setActiveLink(value);
   };
@@ -37,8 +44,9 @@ const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <div className='navhead'>
             <Nav className="me-auto">
-              <Nav.Link 
-                href="#home" 
+             <Nav.Link 
+                 as={Link}
+                 to="/" 
                 className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'} 
                 onClick={() => onUpdateActiveLink('home')}
               >
@@ -52,7 +60,8 @@ const Header = () => {
                 Explore
               </Nav.Link>
               <Nav.Link 
-                href="#AddQuestion" 
+                as={Link}
+                to="addquestion" 
                 className={activeLink === 'addquestion' ? 'active navbar-link' : 'navbar-link'} 
                 onClick={() => onUpdateActiveLink('addquestion')}
               >
@@ -72,6 +81,14 @@ const Header = () => {
               >
                 Code Live
               </Nav.Link>
+              {/* <div className="navbar new">
+            <NavLink style={navlinkstyle}to={'/'}><h2>Home</h2></NavLink>
+            <NavLink style={navlinkstyle} to={'/explore'}><h2>Explore</h2></NavLink>
+            <NavLink style={navlinkstyle} to={'/addquestion'}><h2>Add Question</h2></NavLink>
+            <NavLink style={navlinkstyle} to={'/mystack'}><h2>My Stack</h2></NavLink>
+            <NavLink style={navlinkstyle} to={'/codelive'}><h2>Code Live</h2></NavLink>
+            
+            </div> */}
             </Nav>
 
             <span className='navbar-text'>

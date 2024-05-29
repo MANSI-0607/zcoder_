@@ -17,7 +17,7 @@ const HomeLeft = () => {
             facilis voluptas voluptatum quam quia? Maiores ut enim ea illo optio
             quasi illum doloribus sunt dolor eveniet doloribus dicta Aspernatur
             quia earum possimus laborum est! nam quibusdam, eius accusamus,
-            eaque incidunt deserunt esse ab. Aspernatur quia earum Libero!
+            eaque incidunt deseruntm Libero!
           </p>
           <Button variant="contained" color="success">
             Edit Profile

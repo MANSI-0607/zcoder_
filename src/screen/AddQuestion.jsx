@@ -4,7 +4,7 @@ import QuestionUploadArea from "../components/QuestionUploadArea";
 import "./AddQuestion.css"
 const AddQuestion = () => {
   return (
-    <div className="AddQuestion">
+    <div className="AddQuestion" id="addquestion">
       <QuestionArea />
       <QuestionUploadArea />
     </div>
