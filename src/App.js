@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import AddQuestion from "./screen/AddQuestion";
 import Error from "./components/Error";
 import MyStack from "./screen/MyStack";
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -13,6 +14,7 @@ import {
   Outlet,
 } from "react-router-dom";
 import Explore from "./screen/Explore"
+import Footer from "./components/Footer";
 function App() {
   return (
     <React.Fragment>
@@ -28,6 +30,7 @@ function App() {
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>
+      <Footer></Footer>
     </React.Fragment>
   );
 }

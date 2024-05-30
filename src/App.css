@@ -276,6 +276,17 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   background-color: #57616b; /* Darker blue on hover */
 }
 
+.footer{
+  background-color: white;
+  padding: 3px;
+}
+.ft p{
+  width: 100%;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 
 
