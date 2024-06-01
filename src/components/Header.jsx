@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.svg";
 import bellicon from "../assets/notification.svg";
 import profileicon from "../assets/profile.svg";
-import { Link } from "react-router-dom";
+import "./Header.css"; // Make sure to import the CSS file
 
 const Header = () => {
-  const [activeLink, setActiveLink] = useState("home");
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -21,96 +20,34 @@ const Header = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const onUpdateActiveLink = (value) => {
-    setActiveLink(value);
-  };
-
   return (
-    <Navbar expand="lg" className={scrolled ? "scrolled" : ""}>
-      <Container className="header">
-        <Navbar.Brand as={Link} to="/">
-          <img src={logo} className="logoimg" alt="logo" />
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav">
-          <span className="navbar-toggle-icon"></span>
-        </Navbar.Toggle>
-        <Navbar.Collapse id="basic-navbar-nav">
-          <div className="navhead">
-            <Nav className="me-auto">
-              <Nav.Link
-                as={Link}
-                to="/"
-                className={
-                  activeLink === "home" ? "active navbar-link" : "navbar-link"
-                }
-                onClick={() => onUpdateActiveLink("home")}
-              >
-                Home
-              </Nav.Link>
-              <Nav.Link
-                as={Link}
-                to="/explore"
-                className={
-                  activeLink === "explore"
-                    ? "active navbar-link"
-                    : "navbar-link"
-                }
-                onClick={() => onUpdateActiveLink("explore")}
-              >
-                Explore
-              </Nav.Link>
-              <Nav.Link
-                as={Link}
-                to="/addquestion"
-                className={
-                  activeLink === "addquestion"
-                    ? "active navbar-link"
-                    : "navbar-link"
-                }
-                onClick={() => onUpdateActiveLink("addquestion")}
-              >
-                Add Question
-              </Nav.Link>
-              <Nav.Link
-                as={Link}
-                to="/mystack"
-                className={
-                  activeLink === "mypost" ? "active navbar-link" : "navbar-link"
-                }
-                onClick={() => onUpdateActiveLink("mypost")}
-              >
-                My Stack
-              </Nav.Link>
-              <Nav.Link
-                as={Link}
-                to="/codelive"
-                className={
-                  activeLink === "codelive"
-                    ? "active navbar-link"
-                    : "navbar-link"
-                }
-                onClick={() => onUpdateActiveLink("codelive")}
-              >
-                Code Live
-              </Nav.Link>
-            </Nav>
-
-            <span className="navbar-text">
-              <div className="bell-icon">
-                <a href="#">
-                  <img src={bellicon} alt="notification" />
-                </a>
-              </div>
-              <div className="profile-icon">
-                <a href="#">
-                  <img src={profileicon} alt="profile" />
-                </a>
-              </div>
-            </span>
-          </div>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <div className={`header ${scrolled ? "scrolled" : ""}`}>
+      <NavLink to={"/"} className="logo-link">
+        <img src={logo} className="logoimg" alt="logo" />
+      </NavLink>
+      <nav className="nav-links">
+        <NavLink to={"/explore"} activeClassName="active">
+          Explore
+        </NavLink>
+        <NavLink to={"/addquestion"} activeClassName="active">
+          Add Question
+        </NavLink>
+        <NavLink to={"/mystack"} activeClassName="active">
+          My Stack
+        </NavLink>
+        <NavLink to={"/codelive"} activeClassName="active">
+          Code Live
+        </NavLink>
+      </nav>
+      <div className="icon-links">
+        <NavLink to="/notifications" className="icon-link">
+          <img src={bellicon} alt="notification" />
+        </NavLink>
+        <NavLink to="/" className="icon-link">
+          <img src="profile.jpg" alt="profile" />
+        </NavLink>
+      </div>
+    </div>
   );
 };
 

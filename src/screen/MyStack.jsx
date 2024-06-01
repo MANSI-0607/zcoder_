@@ -1,18 +1,18 @@
-import React from 'react'
-import './MyStack.css';
-import YourPost from '../components/YourPost';
-import Library from '../components/Library';
+import React from "react";
+import "./MyStack.css";
+import YourPost from "../components/YourPost";
+import Library from "../components/Library";
 const MyStack = () => {
   return (
-    <div className='mystack'>
-        <Library></Library>
-        <div className='mystackpost'>
+    <div className="mystack">
+      <Library></Library>
+      <div className="mystackpost">
         <YourPost></YourPost>
         <YourPost></YourPost>
         <YourPost></YourPost>
-        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default MyStack
+export default MyStack;
