@@ -86,7 +86,7 @@ p.danger {
 }
 
 /* Navbar css */
-nav.navbar {
+/* nav.navbar {
   padding: 18px 0;
   position: fixed;
   width: 100%;
@@ -247,7 +247,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
   max-width: 50px;
   max-height:50px; 
   border-radius: 50%;
-} 
+}  */
 
 .err{
   background-color: #fff;
@@ -279,6 +279,7 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .footer{
+  
   width: 100%;
   position: absolute;
   bottom: 0;

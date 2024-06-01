@@ -2,13 +2,15 @@
 
 .header {
   width: 100%;
-  font-size: x-large;
+  font-size: 21px;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 5vw;
-  padding: 10px 20px;
-  background-color: #fff;
+  padding: 5px 20px;
+  margin-bottom: 1px;
+  background-color: #ffffff;
   transition: background-color 0.3s, box-shadow 0.3s;
 }
 
@@ -48,6 +50,7 @@
   display: flex;
   align-items: center;
   gap: 15px;
+  padding-right: 30px;
 }
 
 .icon-link img {

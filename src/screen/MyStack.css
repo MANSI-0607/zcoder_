@@ -1,7 +1,7 @@
 .mystack{
     height: 100vh;
     width: 100%;
-    background-color: rgb(255, 255, 255);
+    background-color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,7 +12,7 @@
 .mystackpost{
     height: 100vh;
     width: 95%;
-    background-color: rgb(255, 255, 255);
+    background-color:rgb(238, 252, 222);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -28,7 +28,7 @@
     align-items: start;
     margin: 10px;
     padding: 4px;
-    background-color: rgb(226, 250, 200);
+    background-color: rgb(255, 255, 255);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
     
 }
@@ -36,8 +36,8 @@
     cursor: pointer;
     transition-delay: 1ms;
     transform: scale(1.002);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25), 0 8px 16px rgba(0, 0, 0, 0.25),
-      inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1);
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25), 0 8px 16px rgba(0, 0, 0, 0.25),
+      inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1); */
   }
 .postdatetime {
     background-color: #b4ecc0;
