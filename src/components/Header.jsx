@@ -22,9 +22,10 @@ const Header = () => {
 
   return (
     <div className={`header ${scrolled ? "scrolled" : ""}`}>
-      <NavLink to={"/"} className="logo-link">
+      {/* <NavLink to={"/"} className="logo-link">
         <img src={logo} className="logoimg" alt="logo" />
-      </NavLink>
+      </NavLink> */}
+      <h2>ZCODER</h2>
       <nav className="nav-links">
         <NavLink to={"/explore"} activeClassName="active">
           Explore
