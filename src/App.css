@@ -250,13 +250,15 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 } 
 
 .err{
+  background-color: #fff;
+  color: #121212;
   width: 100%;
-  height: 91vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: whitesmoke;
+  color: rgb(94, 90, 90);
   padding: 20px;
 }
 .err button {
