@@ -279,9 +279,9 @@ nav.navbar .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
 }
 
 .footer{
-  width: 100%;
+  /* width: 100%;
   position: absolute;
-  bottom: 0;
+  bottom: 0; */
   background-color: white;
   padding: 3px;
 }
