@@ -41,10 +41,10 @@ const Header = () => {
       </nav>
       <div className="icon-links">
         <NavLink to="/notifications" className="icon-link">
-          <img src={bellicon} alt="notification" />
+          <img src={bellicon} />
         </NavLink>
-        <NavLink to="/" className="icon-link">
-          <img src="profile.jpg" alt="profile" />
+        <NavLink to="/home" className="icon-link">
+          <img src="profile.jpg"  />
         </NavLink>
       </div>
     </div>
