@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import './Login.css'; // Import the CSS file
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -28,11 +28,11 @@ const Login = () => {
             type={passwordVisible ? "text" : "password"}
             className="login-input"
           />
-          <FontAwesomeIcon
+          {/* <FontAwesomeIcon
             icon={passwordVisible ? faEyeSlash : faEye}
             className="eye-icon"
             onClick={togglePasswordVisibility}
-          />
+          /> */}
         </div>
         <button className="login-button">Login</button>
         <div className="not-member">

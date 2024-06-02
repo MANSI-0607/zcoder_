@@ -1,7 +1,7 @@
 import React from "react";
 import like from '../assets/like.svg'
 import view from '../assets/view.svg'
-import comment from '../assets/comment.svg'
+import comment from '../assets/comment_.png'
 const Submissions = () => {
   return (
     <div className="Submissions">

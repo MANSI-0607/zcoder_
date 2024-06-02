@@ -1,0 +1,63 @@
+/* EditProfile.css */
+
+.edit-profile {
+    background-color: rgb(233, 240, 251);
+    width: 80%;
+    margin: 10px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+
+  }
+  
+  .edit-profile h2 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+  
+  .edit-profile form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .edit-profile label,
+  .ids label,
+  .ratings label {
+    margin-bottom: 10px;
+    font-size: 17px;
+  }
+  
+  .edit-profile input[type="text"],
+  .edit-profile textarea,
+  .edit-profile select
+ {
+    width: 100%;
+    padding: 8px;
+    margin-top: 4px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .edit-profile textarea{
+    height: 100px;
+  }
+  
+  .edit-profile button {
+    font-size: 19px;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .edit-profile button:hover {
+    background-color: #0056b3;
+  }
+  .codingsites{
+    display: flex;
+    gap: 20px;
+    padding: 5px;
+  }

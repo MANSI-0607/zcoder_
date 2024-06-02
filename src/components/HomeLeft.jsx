@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import Button from "@mui/material/Button";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
@@ -19,9 +20,12 @@ const HomeLeft = () => {
             quia earum possimus laborum est! nam quibusdam, eius accusamus,
             eaque incidunt deseruntm Libero!
           </p>
+          <NavLink to={"/edit-profile"} activeClassName="active">
           <Button variant="contained" color="success">
             Edit Profile
           </Button>
+        </NavLink>
+         
         </div>
         <div className="community_stats">
           <h3>Community Stats</h3>
