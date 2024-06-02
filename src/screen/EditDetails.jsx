@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import Select from 'react-select';
 import './EditDetails.css'
 const EditDetails = () => {
     
@@ -9,8 +10,8 @@ const EditDetails = () => {
     const [about, setAbout] = useState('');
     const [linkedin, setLinkedin] = useState('');
     const [github, setGithub] = useState('');
-    const [language, setLanguage] = useState('');
-    const [skills, setSkills] = useState('');
+    const [languages, setLanguages] = useState([]);
+    const [selectedSkills, setSelectedSkills] = useState([]);
     const [profilePicture, setProfilePicture] = useState('');
     const [codeforcesId, setCodeforcesId] = useState('');
     const [leetcodeId, setLeetcodeId] = useState('');
@@ -20,7 +21,35 @@ const EditDetails = () => {
     const [leetcodeRating, setLeetcodeRating] = useState('');
     const [codechefRating, setCodechefRating] = useState('');
     const [geeksforgeeksRating, setGeeksforgeeksRating] = useState('');
-      
+    
+    const languageOptions = [
+      { value: 'C++', label: 'C++' },
+      { value: 'C', label: 'C' },
+      { value: 'JavaScript', label: 'JavaScript' },
+      { value: 'Python', label: 'Python' },
+      { value: 'Java', label: 'Java' },
+      { value: 'Kotlin', label: 'Kotlin' },
+      // Add more options for other coding languages
+    ];
+
+    const techSkillsOptions = [
+      { value: 'HTML', label: 'HTML' },
+      { value: 'CSS', label: 'CSS' },
+      { value: 'NODE JS', label: 'NODE JS' },
+      { value: 'React', label: 'React' },
+      { value: 'ANGULAR', label: 'ANGULAR' },
+      { value: 'FLUTTER', label: 'FLUTTER' },
+      // Add more skills as needed
+    ]; 
+    const handleSkillChange = (selectedOptions) => {
+      setSelectedSkills(selectedOptions);
+    };
+  
+  
+    // Handler for language selection
+    const handleLanguageChange = (selectedOptions) => {
+      setLanguages(selectedOptions);
+    };
         const handleSubmit = (e) => {
           e.preventDefault();
           // Add logic to handle form submission (e.g., update user profile details)
@@ -68,19 +97,25 @@ const EditDetails = () => {
           GitHub ID:
           <input type="text" value={github} onChange={(e) => setGithub(e.target.value)} />
         </label>
-        <label>
+       
+          <label>
           Languages:
-          <select multiple value={language} onChange={(e) => setLanguage(Array.from(e.target.selectedOptions, option => option.value))}>
-    <option value="JavaScript">JavaScript</option>
-    <option value="Python">Python</option>
-    <option value="Java">Java</option>
-    <option value="C++">C++</option>
-    {/* Add more options for other coding languages */}
-  </select>
+          <Select
+            isMulti
+            value={languages}
+            onChange={handleLanguageChange}
+            options={languageOptions}
+          />
         </label>
+        
         <label>
           Skills:
-          <input type="text" value={skills} onChange={(e) => setSkills(e.target.value)} />
+          <Select
+            value={selectedSkills}
+            onChange={handleSkillChange}
+            options={techSkillsOptions}
+            isMulti
+          />
         </label>
         <h3>Coding Platforms</h3>
         <div className='codingsites'>
@@ -130,4 +165,4 @@ const EditDetails = () => {
   )
 }
 
-export default EditDetails
+export default EditDetails
