@@ -165,4 +165,4 @@ const EditDetails = () => {
   )
 }
 
-export default EditDetails
+export default EditDetails
