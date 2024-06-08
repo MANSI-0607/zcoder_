@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
+import { CurrentUserContext } from "../App"; 
 
 const Login = () => {
+  const { setCurrentUsername } = useContext(CurrentUserContext); 
   const navigate = useNavigate();
   const [user, setUser] = useState({
     userName: "",
@@ -18,8 +20,6 @@ const Login = () => {
   };
 
   const handleLogin = async () => {
-    console.log(user.username);
-
     try {
       const response = await fetch("http://localhost:8000/login", {
         method: "POST",
@@ -30,9 +30,16 @@ const Login = () => {
       });
 
       if (response.ok) {
+<<<<<<< HEAD
         localStorage.setItem("username", user.userName);
         alert("Login successful!");
         navigate(`/${user.userName}/edit-profile`);
+=======
+        const data = await response.json();
+        setCurrentUsername(data.userName);
+        alert("Login successful!");
+        navigate(`/${data.userName}/edit-profile`);
+>>>>>>> 944bb4dc30687d5b75d037356580867b7afd7a15
       } else {
         const data = await response.json();
         alert(data.msg);
@@ -51,7 +58,7 @@ const Login = () => {
     <div className="login">
       <div className="login-container">
         <h2>Login</h2>
-        <label>username</label>
+        <label>Username</label>
         <input
           type="text"
           name="userName"

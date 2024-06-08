@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { NavLink } from "react-router-dom";
-import logo from "../assets/logo.svg";
 import bellicon from "../assets/notification.svg";
 import profileicon from "../assets/profile.svg";
-import "./Header.css"; // Make sure to import the CSS file
+import "./Header.css"; 
+import { CurrentUserContext } from "../App";
 
 const Header = () => {
+  const { currentUsername } = useContext(CurrentUserContext);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -22,30 +23,27 @@ const Header = () => {
 
   return (
     <div className={`header ${scrolled ? "scrolled" : ""}`}>
-      {/* <NavLink to={"/"} className="logo-link">
-        <img src={logo} className="logoimg" alt="logo" />
-      </NavLink> */}
       <h2>ZCODER</h2>
       <nav className="nav-links">
-        <NavLink to={"/explore"} activeClassName="active">
+        <NavLink to={`/${currentUsername}/explore`} activeClassName="active">
           Explore
         </NavLink>
-        <NavLink to={"/addquestion"} activeClassName="active">
+        <NavLink to={`/${currentUsername}/uploadQuestion`} activeClassName="active">
           Add Question
         </NavLink>
-        <NavLink to={"/mystack"} activeClassName="active">
+        <NavLink to={`/${currentUsername}/mystack`} activeClassName="active">
           My Stack
         </NavLink>
-        <NavLink to={"/codelive"} activeClassName="active">
+        <NavLink to={`/${currentUsername}/codelive`} activeClassName="active">
           Code Live
         </NavLink>
       </nav>
       <div className="icon-links">
-        <NavLink to="/notifications" className="icon-link">
-          <img src={bellicon} />
+        <NavLink to={`/${currentUsername}/notifications`} className="icon-link">
+          <img src={bellicon} alt="Notifications" />
         </NavLink>
-        <NavLink to="/home" className="icon-link">
-          <img src="profile.jpg"  />
+        <NavLink to={`/${currentUsername}/home`} className="icon-link">
+          <img src="profile.jpg" alt="Profile" />
         </NavLink>
       </div>
     </div>

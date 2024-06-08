@@ -6,7 +6,11 @@ const EditProfileSchema = new mongoose.Schema({
     // ref: 'SignUp',
     type:String,
     required: true,
+<<<<<<< HEAD
    
+=======
+    unique: true
+>>>>>>> 944bb4dc30687d5b75d037356580867b7afd7a15
   },
   firstName: {
     type:String,
