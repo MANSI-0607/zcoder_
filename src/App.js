@@ -19,23 +19,6 @@ function App() {
 
   return (
     <React.Fragment>
-<<<<<<< HEAD
-      <Router>
-        <Header />
-        <Routes>
-          <Route exact path="/:userName/home" element={<Home />} />
-          <Route path="/addquestion" element={<AddQuestion />} />
-          <Route path="/explore" element={<Explore />} />
-          <Route path="/mystack" element={<MyStack />} />
-          {/* <Route exact path="/login" element={<Login />} /> */}
-          <Route path="/edit-profile" element={<EditDetails />} />
-          <Route path="/" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
-
-          <Route path="*" element={<Error />} />
-        </Routes>
-      </Router>
-=======
       <CurrentUserContext.Provider value={{ currentUsername, setCurrentUsername }}>
         <Router>
           <Header />
@@ -51,7 +34,6 @@ function App() {
           </Routes>
         </Router>
       </CurrentUserContext.Provider>
->>>>>>> 944bb4dc30687d5b75d037356580867b7afd7a15
       <Footer />
     </React.Fragment>
   );

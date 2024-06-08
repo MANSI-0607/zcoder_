@@ -10,14 +10,9 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-<<<<<<< HEAD
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.4.1",
     "nodemon": "^3.1.3"
-=======
-    "nodemon": "^3.1.3",
-    "prettier": "^3.3.1"
->>>>>>> 944bb4dc30687d5b75d037356580867b7afd7a15
   }
 }

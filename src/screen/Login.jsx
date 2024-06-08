@@ -30,16 +30,10 @@ const Login = () => {
       });
 
       if (response.ok) {
-<<<<<<< HEAD
-        localStorage.setItem("username", user.userName);
-        alert("Login successful!");
-        navigate(`/${user.userName}/edit-profile`);
-=======
         const data = await response.json();
         setCurrentUsername(data.userName);
         alert("Login successful!");
         navigate(`/${data.userName}/edit-profile`);
->>>>>>> 944bb4dc30687d5b75d037356580867b7afd7a15
       } else {
         const data = await response.json();
         alert(data.msg);
