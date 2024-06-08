@@ -1,5 +1,6 @@
+//const jwt = require('jsonwebtoken');
 const SignUp = require("../model/SignUp");
-
+//const JWT_SECRET = process.env.JWT_SECRET;
 async function handleSignUp(req, res) {
   const body = req.body;
   if (
@@ -12,7 +13,7 @@ async function handleSignUp(req, res) {
   ) {
     return res.status(400).json({ msg: "All fields are required" });
   }
-
+  
   if (body.password !== body.confirmPassword) {
     return res.status(400).json({ msg: "Passwords should match" });
   }
@@ -25,7 +26,8 @@ async function handleSignUp(req, res) {
       password: body.password,
       timeOfCreation: body.timeOfCreation,
     });
-    return res.status(201).json({ msg: "Success", id: result._id });
+    //const token = jwt.sign({ userId: result._id, email: result.email }, JWT_SECRET);
+    return res.status(201).json({ msg: "Success" });
   } catch (error) {
     if (error.code === 11000) {  // Handle unique constraint errors
       return res.status(400).json({ msg: "Email or Username already exists" });

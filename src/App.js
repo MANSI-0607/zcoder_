@@ -18,7 +18,7 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          <Route exact path="/home" element={<Home />} />
+          <Route exact path="/:userName/home" element={<Home />} />
           <Route path="/addquestion" element={<AddQuestion />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/mystack" element={<MyStack />} />

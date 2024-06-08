@@ -5,6 +5,7 @@ const app = express();
 const PORT = 8000;
 const SignUpRouter = require("./routes/SignUp");
 const LoginRouter = require("./routes/Login");
+const EditProfileRouter = require("./routes/EditProfile");
 const { connectToMongoDB } = require("./connect");
 
 // Connect to MongoDB
@@ -32,6 +33,8 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use("/signUp", SignUpRouter);
 app.use("/login", LoginRouter);
+app.use("/:userName/edit-profile", EditProfileRouter);
+
 
 app.listen(PORT, () => {
   console.log(`Server is started at PORT:${PORT}`);
