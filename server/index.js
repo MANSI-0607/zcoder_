@@ -1,10 +1,12 @@
 const express = require("express");
 const cors = require("cors");
-const bodyParser=require('body-parser')
+const bodyParser = require("body-parser");
 const app = express();
 const PORT = 8000;
 const SignUpRouter = require("./routes/SignUp");
 const LoginRouter = require("./routes/Login");
+const UploadedQuestionRouter = require("./routes/UploadQuestion");
+const EditProfileRouter = require("./routes/EditProfile");
 const { connectToMongoDB } = require("./connect");
 
 // Connect to MongoDB
@@ -32,6 +34,8 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use("/signUp", SignUpRouter);
 app.use("/login", LoginRouter);
+app.use("/:userName/edit-profile", EditProfileRouter);
+app.use("/", UploadedQuestionRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is started at PORT:${PORT}`);
