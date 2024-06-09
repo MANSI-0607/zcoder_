@@ -3,10 +3,12 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const app = express();
 const PORT = 8000;
+
 const SignUpRouter = require("./routes/SignUp");
 const LoginRouter = require("./routes/Login");
 const UploadedQuestionRouter = require("./routes/UploadQuestion");
 const EditProfileRouter = require("./routes/EditProfile");
+const GetProfileRouter = require("./routes/Profile");
 const { connectToMongoDB } = require("./connect");
 
 // Connect to MongoDB
@@ -25,16 +27,13 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // Enable CORS for all routes
-// const corsOptions = {
-//   origin: 'http://localhost:3000', // Replace with your frontend's origin
-//   optionsSuccessStatus: 200 // Some legacy browsers choke on 204
-// };
-
 app.use(cors());
 app.use(bodyParser.json());
+
 app.use("/signUp", SignUpRouter);
 app.use("/login", LoginRouter);
 app.use("/:userName/edit-profile", EditProfileRouter);
+app.use("/home", GetProfileRouter); 
 app.use("/", UploadedQuestionRouter);
 
 app.listen(PORT, () => {

@@ -4,26 +4,24 @@ const EditProfileSchema = new mongoose.Schema({
   userName: {
     // type: mongoose.Schema.Types.ObjectId,
     // ref: 'SignUp',
-    type:String,
+    type: String,
     required: true,
-   
   },
   firstName: {
-    type:String,
+    type: String,
     required: true,
   },
   lastName: String,
   institute: {
-    type:String,
+    type: String,
     required: true,
   },
   gender: {
-    type:String,
+    type: String,
     required: true,
   },
-  about:{
-    type:String,
-    
+  about: {
+    type: String,
   },
   linkedin: String,
   github: String,
