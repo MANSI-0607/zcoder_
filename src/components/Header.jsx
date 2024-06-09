@@ -43,7 +43,7 @@ const Header = () => {
           <img src={bellicon} alt="Notifications" />
         </NavLink>
         <NavLink to={`/${currentUsername}/home`} className="icon-link">
-          <img src="profile.jpg" alt="Profile" />
+          <img src="/profile.jpg" alt="Profile" />
         </NavLink>
       </div>
     </div>

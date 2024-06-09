@@ -1,3 +1,6 @@
+// Corrected and improved version of the component
+// This includes some suggestions mentioned above
+
 import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Button from "@mui/material/Button";
@@ -10,6 +13,7 @@ import "./Home.css";
 
 const Home = () => {
   const { currentUsername } = useContext(CurrentUserContext);
+  const [clickedRating, setClickedRating] = useState("");
   const [profileData, setProfileData] = useState({
     firstName: "",
     lastName: "",
@@ -36,7 +40,7 @@ const Home = () => {
       try {
         const response = await fetch(`http://localhost:8000/home`);
         const data = await response.json();
-        const fetchedData = {
+        setProfileData({
           currentUsername,
           firstName: data.firstName,
           lastName: data.lastName,
@@ -56,31 +60,65 @@ const Home = () => {
           leetcodeRating: data.leetcodeRating,
           codechefRating: data.codechefRating,
           geeksforgeeksRating: data.geeksforgeeksRating,
-        };
-        setProfileData(fetchedData);
+        });
       } catch (error) {
         console.error("Error fetching profile:", error);
+        // Add error handling logic here, e.g., set an error state
       }
     };
 
     fetchProfile();
-  }, [currentUsername]); // Fetch profile when currentUsername changes
+  }, [currentUsername]);
+
+  const handleImageClick = (e) => {
+    document.querySelectorAll(".cpimages img").forEach((img) => {
+      img.classList.remove("scaled");
+    });
+    e.target.classList.add("scaled");
+    setClickedRating(e.target.getAttribute("value"));
+  };
+
+  const getRating = () => {
+    switch (clickedRating) {
+      case "Codeforces":
+        return profileData.codeforcesRating;
+      case "Leetcode":
+        return profileData.leetcodeRating;
+      case "Codechef":
+        return profileData.codechefRating;
+      default:
+        return "-";
+    }
+  };
+
+  const getProfileUrl = () => {
+    switch (clickedRating) {
+      case "Codeforces":
+        return `https://codeforces.com/profile/${profileData.codeforcesId}`;
+      case "Leetcode":
+        return `https://leetcode.com/${profileData.leetcodeId}`;
+      case "Codechef":
+        return `https://www.codechef.com/users/${profileData.codechefId}`;
+      default:
+        return `https://auth.geeksforgeeks.org/user/${profileData.geeksforgeeksId}/profile`;
+    }
+  };
+
+  const UserLanguages = profileData.languages;
+  const UserSkills = profileData.selectedSkills;
 
   return (
     <div>
-      {/* <Header/> */}
       <div className="home_display">
         <div className="HomeLeft">
           <div className="HomeLeft_card">
             <div className="profile_section">
-              <img src="profile.jpg" alt="" />
+              <img src="/profile.jpg" alt="Profile Picture" />
               <h4>
                 {profileData.firstName} {profileData.lastName}
               </h4>
               <h5>{profileData.institute}</h5>
-              <p>
-                {profileData.about}
-              </p>
+              <p>{profileData.about}</p>
               <NavLink
                 to={`/${currentUsername}/edit-profile`}
                 activeClassName="active"
@@ -93,32 +131,41 @@ const Home = () => {
             <div className="community_stats">
               <h3>Community Stats</h3>
               <h4>
-                {" "}
                 <VisibilityIcon /> Views: 98
               </h4>
               <h4>
-                {" "}
-                <CheckBoxIcon />
-                Solutions: 66
+                <CheckBoxIcon /> Solutions: 66
               </h4>
               <h4>
-                <ThumbUpIcon />
-                Likes: 5.6K
+                <ThumbUpIcon /> Likes: 5.6K
               </h4>
               <h4>
-                <PersonAddIcon />
-                Friends: 249
+                <PersonAddIcon /> Friends: 249
               </h4>
             </div>
 
             <div className="social_media">
               <div className="linkedin">
-                <img src="LinkedIn.png" alt="" />
-                <h4>{profileData.linkedin}</h4>
+                <img src="/LinkedIn.png" alt="LinkedIn Logo" />
+                <a
+                  className="linktocp"
+                  href={`https://www.linkedin.com/in/${profileData.linkedin}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  LinkedIn
+                </a>
               </div>
               <div className="github">
-                <img src="github.png" alt="" />
-                <h4>{profileData.github}</h4>
+                <img src="/github.png" alt="GitHub Logo" />
+                <a
+                  className="linktocp"
+                  href={`https://github.com/${profileData.github}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Github
+                </a>
               </div>
             </div>
           </div>
@@ -127,51 +174,72 @@ const Home = () => {
           <div className="layer1">
             <div className="codingPlatforms">
               <div className="cpimages">
-                <img src="codeforces.jpg" alt="" />
-                <img src="leetcode.png" alt="" />
-                <img src="codechef.jpg" alt="" />
+                <img
+                  value="Codeforces"
+                  src="/codeforces.jpg"
+                  onClick={handleImageClick}
+                  alt="Codeforces Logo"
+                />
+                <img
+                  value="Leetcode"
+                  src="/leetcode.png"
+                  onClick={handleImageClick}
+                  alt="Leetcode Logo"
+                />
+                <img
+                  value="Codechef"
+                  src="/codechef.jpg"
+                  onClick={handleImageClick}
+                  alt="Codechef Logo"
+                />
+                <img
+                  value="GeeksForGeeks"
+                  src="/gfg.png"
+                  onClick={handleImageClick}
+                  alt="GeeksForGeeks Logo"
+                />
               </div>
-              <h3>Rating:1200</h3>
+              <h3>
+                {clickedRating} Rating: {getRating()}
+                <br />
+                <a
+                  className="linktocp"
+                  href={getProfileUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Click here to visit my {clickedRating} profile
+                </a>
+              </h3>
             </div>
             <div className="techStack">
               <h3>
                 Languages:
-                <button className="language_compo">React</button>
-                <button className="language_compo">React</button>
-                <button className="AddMore">+</button>
+                {UserLanguages.map((language, index) => (
+                  <button key={index} className="language_compo">
+                    {language}
+                  </button>
+                ))}
               </h3>
               <h3>
                 Skills:
-                <button className="language_compo">React</button>
-                <button className="language_compo">React</button>
-                <button className="language_compo">React</button>
-                <button className="AddMore">+</button>
+                {UserSkills.map((skills, index) => (
+                  <button key={index} className="language_compo">
+                    {skills}
+                  </button>
+                ))}
               </h3>
             </div>
           </div>
           <div className="recentQuestion">
             <h2>Recent Questions</h2>
             <div className="questions">
-              <div className="questionList">
-                <h3>Find Root </h3>
-                <h4>40 minutes ago</h4>
-              </div>
-              <div className="questionList">
-                <h3>Find Root </h3>
-                <h4>40 minutes ago</h4>
-              </div>
-              <div className="questionList">
-                <h3>Find Root </h3>
-                <h4>40 minutes ago</h4>
-              </div>
-              <div className="questionList">
-                <h3>Find Root </h3>
-                <h4>40 minutes ago</h4>
-              </div>
-              <div className="questionList">
-                <h3>Find Root </h3>
-                <h4>40 minutes ago</h4>
-              </div>
+              {[...Array(5)].map((_, index) => (
+                <div key={index} className="questionList">
+                  <h3>Find Root</h3>
+                  <h4>40 minutes ago</h4>
+                </div>
+              ))}
             </div>
           </div>
         </div>

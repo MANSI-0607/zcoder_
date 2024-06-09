@@ -1,26 +1,23 @@
 .home_display {
-  padding: 5px;
+  padding: 4vh;
   display: flex;
   gap: 2vw;
+  flex-wrap: wrap;
   background-color: white;
 }
 
 .HomeLeft,
 .HomeRight {
   border-radius: 3px;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11), 0 2px 2px rgba(0, 0, 0, 0.11),
-    /* 0 4px 4px rgba(0, 0, 0, 0.11), 0 8px 8px rgba(0, 0, 0, 0.11), */
-    0 16px 16px rgba(0, 0, 0, 0.11), 0 32px 32px rgba(0, 0, 0, 0.11);
-  
-  
-    
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11),
+              0 2px 2px rgba(0, 0, 0, 0.11),
+              0 16px 16px rgba(0, 0, 0, 0.11),
+              0 32px 32px rgba(0, 0, 0, 0.11);
 }
 
 .HomeLeft {
   padding: 2vh;
   width: 25%;
-  
-
 }
 
 .HomeLeft img {
@@ -38,8 +35,9 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.25),
-    inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25),
+              0 2px 8px rgba(0, 0, 0, 0.25),
+              inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1);
 }
 
 .profile_section p {
@@ -53,24 +51,26 @@
 .layer1 {
   padding: 4vh;
   display: flex;
- margin-bottom: 20px;
+  margin-bottom: 20px;
   gap: 2vw;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.25),
-    inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25),
+              0 2px 8px rgba(0, 0, 0, 0.25),
+              inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1);
 }
 
 .codingPlatforms {
   padding: 1vh 2vw;
   height: 20vh;
-  width: 40%;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.25),
-    inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1);
+  width: 60%;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25),
+              0 2px 8px rgba(0, 0, 0, 0.25),
+              inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1);
   text-align: center;
 }
 
 .codingPlatforms img {
-  width: 5vw;
-  height: 5vw;
+  width: 4vw;
+  height: 4vw;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -81,16 +81,27 @@
   margin-bottom: 2vh;
 }
 
-.cpimages img:hover {
-  transform: scale(1.02);
+.cpimages img:hover,
+.cpimages img:active,
+.cpimages img.scaled {
+  transform: scale(1.2);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25),
+  0 2px 8px rgba(0, 0, 0, 0.25),
+  inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
-
+.linktocp{
+  text-decoration: none;
+  font-size: 15px;
+}
 .techStack {
   margin-left: 1vw;
   padding: 1vh 2vw;
-  width: 100%;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.25),
-    inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1);
+  width: 90%;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25),
+              0 2px 8px rgba(0, 0, 0, 0.25),
+              inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -156,14 +167,15 @@
   padding: 3vh;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.25),
-    inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25),
+              0 2px 8px rgba(0, 0, 0, 0.25),
+              inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1);
   text-align: start;
 }
 
-.community_stats h3{
- align-self: center;
- margin-bottom: 3px;
+.community_stats h3 {
+  align-self: center;
+  margin-bottom: 3px;
 }
 
 .community_stats h4 {
@@ -180,8 +192,9 @@
   align-items: center;
   text-align: center;
   flex-direction: row;
-  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25), 0 2px 8px rgba(0, 0, 0, 0.25),
-    inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.25),
+              0 2px 8px rgba(0, 0, 0, 0.25),
+              inset 0px 0px 0px 1px rgba(255, 255, 255, 0.1);
 }
 
 .social_media img {
@@ -201,10 +214,3 @@
 .github:hover img {
   transform: scale(1.2);
 }
-.home_display {
-  padding: 4vh;
-  display: flex;
-  gap: 2vw;
-  flex-wrap: wrap;
-}
-
