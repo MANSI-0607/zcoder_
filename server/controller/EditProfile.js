@@ -7,6 +7,7 @@ async function handleEditProfile(req, res) {
   console.log(profileData);
   const userName=profileData.currentUsername;
   console.log(userName);
+  //console.log(req.body);
   try {
     // Check if profile exists
     const existingProfile = await EditProfile.findOne({ userName });
@@ -18,12 +19,16 @@ async function handleEditProfile(req, res) {
         { $set: profileData },
         { new: true }
       );
-      res.status(200).json({ msg: "Profile updated successfully", profile: updatedProfile });
+      res
+        .status(200)
+        .json({ msg: "Profile updated successfully", profile: updatedProfile });
     } else {
       // Create new profile
       const newProfile = new EditProfile({ userName, ...profileData });
       await newProfile.save();
-      res.status(200).json({ msg: "Profile created successfully", profile: newProfile });
+      res
+        .status(200)
+        .json({ msg: "Profile created successfully", profile: newProfile });
     }
   } catch (error) {
     res.status(500).json({ msg: "Internal Server Error", error });

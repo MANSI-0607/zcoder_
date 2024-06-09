@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import Button from "@mui/material/Button";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
+import { CurrentUserContext } from "../App";
 const HomeLeft = () => {
+  const { currentUsername } = useContext(CurrentUserContext);
   return (
     <div className="HomeLeft">
       <div className="HomeLeft_card">
@@ -20,12 +22,11 @@ const HomeLeft = () => {
             quia earum possimus laborum est! nam quibusdam, eius accusamus,
             eaque incidunt deseruntm Libero!
           </p>
-          <NavLink to={"/edit-profile"} activeClassName="active">
-          <Button variant="contained" color="success">
-            Edit Profile
-          </Button>
-        </NavLink>
-         
+          <NavLink to={`/${currentUsername}/edit-profile`} activeClassName="active">
+            <Button variant="contained" color="success">
+              Edit Profile
+            </Button>
+          </NavLink>
         </div>
         <div className="community_stats">
           <h3>Community Stats</h3>
