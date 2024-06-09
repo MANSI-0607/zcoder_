@@ -4,13 +4,13 @@ async function handleEditProfile(req, res) {
  // const { userName } = req.params; // Extract username from URL parameters
   
   const profileData = req.body; 
- // console.log(profileData);
+  console.log(profileData);
   const userName=profileData.currentUsername;
   console.log(userName);
   try {
     // Check if profile exists
     const existingProfile = await EditProfile.findOne({ userName });
-    console.log(existingProfile);
+   // console.log(existingProfile);
     if (existingProfile) {
       // Update existing profile
       const updatedProfile = await EditProfile.findOneAndUpdate(

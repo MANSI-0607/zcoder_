@@ -80,6 +80,8 @@ const EditDetails = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const languages = editUser.languages.length > 0 ? editUser.languages.map(lang => lang.value) : [];
+    const selectedSkills = editUser.selectedSkills.length > 0 ? editUser.selectedSkills.map(skill => skill.value) : [];
     const profileData = {
       currentUsername,
       firstName: editUser.firstName,
@@ -89,8 +91,8 @@ const EditDetails = () => {
       about: editUser.about,
       linkedin: editUser.linkedin,
       github: editUser.github,
-      languages: editUser.languages,
-      selectedSkills: editUser.selectedSkills,
+      languages: languages,
+      selectedSkills: selectedSkills,
       profilePicture: editUser.profilePicture,
       codeforcesId: editUser.codeforcesId,
       leetcodeId: editUser.leetcodeId,
