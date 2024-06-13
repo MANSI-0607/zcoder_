@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 import Select from "react-select";
 import "./EditDetails.css";
 import { CurrentUserContext } from "../App";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const EditDetails = () => {
   const { currentUsername } = useContext(CurrentUserContext);

@@ -1,19 +1,16 @@
-// Corrected and improved version of the component
-// This includes some suggestions mentioned above
-
 import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Button from "@mui/material/Button";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import CheckBoxIcon from "@material-ui/icons/CheckBox";
 import ThumbUpIcon from "@material-ui/icons/ThumbUp";
-import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import { CurrentUserContext } from "../App";
 import "./Home.css";
 
 const Home = () => {
   const { currentUsername } = useContext(CurrentUserContext);
   const [clickedRating, setClickedRating] = useState("");
+  const [recentQuestions, setRecentQuestions] = useState([]);
   const [profileData, setProfileData] = useState({
     firstName: "",
     lastName: "",
@@ -63,12 +60,28 @@ const Home = () => {
         });
       } catch (error) {
         console.error("Error fetching profile:", error);
-        // Add error handling logic here, e.g., set an error state
       }
     };
 
     fetchProfile();
   }, [currentUsername]);
+
+  useEffect(() => {
+    const fetchRecentQuestions = async () => {
+      try {
+        const response = await fetch(`http://localhost:8000/getRecentQuestion`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setRecentQuestions(data);
+      } catch (error) {
+        console.error("Error fetching recent questions:", error);
+      }
+    };
+
+    fetchRecentQuestions();
+  }, []);
 
   const handleImageClick = (e) => {
     document.querySelectorAll(".cpimages img").forEach((img) => {
@@ -113,7 +126,7 @@ const Home = () => {
         <div className="HomeLeft">
           <div className="HomeLeft_card">
             <div className="profile_section">
-              <img src="/profile.jpg" alt="Profile Picture" />
+              <img src="/profile.jpg"alt="Profile Picture" />
               <h4>
                 {profileData.firstName} {profileData.lastName}
               </h4>
@@ -140,7 +153,7 @@ const Home = () => {
                 <ThumbUpIcon /> Likes: 5.6K
               </h4>
               <h4>
-                <PersonAddIcon /> Friends: 249
+                <ThumbUpIcon /> Friends: 249
               </h4>
             </div>
 
@@ -234,10 +247,15 @@ const Home = () => {
           <div className="recentQuestion">
             <h2>Recent Questions</h2>
             <div className="questions">
-              {[...Array(5)].map((_, index) => (
+              {recentQuestions.map((question, index) => (
                 <div key={index} className="questionList">
-                  <h3>Find Root</h3>
-                  <h4>40 minutes ago</h4>
+                  <h3>
+                    {question.question.length > 65
+                      ? question.question.substring(0, 65) + "..."
+                      : question.question}
+                  </h3>
+
+                  <h4>{new Date(question.timeOfCreation).toLocaleString()}</h4>
                 </div>
               ))}
             </div>
