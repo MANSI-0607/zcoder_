@@ -9,6 +9,8 @@ const LoginRouter = require("./routes/Login");
 const UploadedQuestionRouter = require("./routes/UploadQuestion");
 const EditProfileRouter = require("./routes/EditProfile");
 const GetProfileRouter = require("./routes/Profile");
+const GetRecentQuestionRouter = require("./routes/FetchRecentQuestions");
+const GetMyStackRouter=require("./routes/MyStack")
 const { connectToMongoDB } = require("./connect");
 
 // Connect to MongoDB
@@ -33,8 +35,10 @@ app.use(bodyParser.json());
 app.use("/signUp", SignUpRouter);
 app.use("/login", LoginRouter);
 app.use("/:userName/edit-profile", EditProfileRouter);
-app.use("/home", GetProfileRouter); 
+app.use("/home", GetProfileRouter);
 app.use("/", UploadedQuestionRouter);
+app.use("/getRecentQuestion", GetRecentQuestionRouter);
+app.use("/:username/mystack", GetMyStackRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is started at PORT:${PORT}`);

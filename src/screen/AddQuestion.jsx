@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Editor from "@monaco-editor/react";
 import Button from "@mui/material/Button";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -7,10 +7,11 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import "./AddQuestion.css";
- 
+import { CurrentUserContext } from "../App";
 const AddQuestion = () => {
+  const { currentUsername } = useContext(CurrentUserContext);
   const [uploadedQuestion, setUploadedQuestion] = useState({
-    username: "pabitra",
+    username: currentUsername,
     question: "",
     notes: "",
     code: "",
@@ -60,7 +61,7 @@ const AddQuestion = () => {
 
     // Reset the form fields after upload
     setUploadedQuestion({
-      username: "pabitra",
+      username: currentUsername,
       question: "",
       notes: "",
       code: "",

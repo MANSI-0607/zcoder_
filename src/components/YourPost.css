@@ -1,0 +1,7 @@
+.public {
+    color: #03966a; /* Green color for Public */
+  }
+  
+  .private {
+    color: #dc3545; /* Red color for Private */
+  }
