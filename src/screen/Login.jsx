@@ -29,21 +29,52 @@ const Login = () => {
         body: JSON.stringify(user),
       });
 
+      // if (response.ok) {
+      //   const data = await response.json();
+      //   setCurrentUsername(data.userName);
+      //   alert("Login successful!");
+      //   navigate(`/${data.userName}/edit-profile`);
+      // } else {
+      //   const data = await response.json();
+      //   alert(data.msg);
+      // }/
       if (response.ok) {
         const data = await response.json();
-        setCurrentUsername(data.userName);
+        const username = data.userName;
+        setCurrentUsername(username);
+        localStorage.setItem("currentUsername", username);
         alert("Login successful!");
-        navigate(`/${data.userName}/edit-profile`);
-      } else {
-        const data = await response.json();
-        alert(data.msg);
+        // Check if the user's profile exists
+      // Check if the user's profile exists
+      try {
+        const profileResponse = await fetch(`http://localhost:8000/home/${username}`);
+        
+        if (profileResponse.ok) {
+          const profileData = await profileResponse.json();
+          console.log("Profile data:", profileData);
+          navigate(`/${username}/home`);
+        } else {
+          console.log("Profile not found, navigating to edit profile");
+          navigate(`/${username}/edit-profile`);
+        }
+      } catch (error) {
+        console.error("Error during profile check:", error);
+        alert("Profile check failed. Please try again later.");
+        navigate(`/${username}/edit-profile`);
       }
-    } catch (error) {
-      console.error("Error during login:", error);
-      alert("Login failed. Please try again later.");
+    } else {
+      const data = await response.json();
+      alert(data.msg);
     }
-  };
+  } catch (error) {
+    console.error("Error during login:", error);
+    alert("Login failed. Please try again later.");
+  }
+};
 
+  
+  
+  
   const handleSignup = () => {
     navigate("/");
   };

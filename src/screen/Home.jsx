@@ -35,10 +35,14 @@ const Home = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/home`);
+        const response = await fetch(`http://localhost:8000/home/${currentUsername}`);
+        console.log("Current Username:", currentUsername); //debug
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
         setProfileData({
-          currentUsername,
+          ...profileData,
           firstName: data.firstName,
           lastName: data.lastName,
           institute: data.institute,
@@ -126,16 +130,13 @@ const Home = () => {
         <div className="HomeLeft">
           <div className="HomeLeft_card">
             <div className="profile_section">
-              <img src="/profile.jpg"alt="Profile Picture" />
+              <img src={profileData.profilePicture} alt="Profile Picture" />
               <h4>
                 {profileData.firstName} {profileData.lastName}
               </h4>
               <h5>{profileData.institute}</h5>
               <p>{profileData.about}</p>
-              <NavLink
-                to={`/${currentUsername}/edit-profile`}
-                activeClassName="active"
-              >
+              <NavLink to={`/${currentUsername}/edit-profile`} activeClassName="active">
                 <Button variant="contained" color="success">
                   Edit Profile
                 </Button>
@@ -251,10 +252,9 @@ const Home = () => {
                 <div key={index} className="questionList">
                   <h3>
                     {question.question.length > 65
-                      ? question.question.substring(0, 65) + "..."
+                      ? `${question.question.substring(0, 65)}...`
                       : question.question}
                   </h3>
-
                   <h4>{new Date(question.timeOfCreation).toLocaleString()}</h4>
                 </div>
               ))}

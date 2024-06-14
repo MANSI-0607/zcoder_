@@ -3,7 +3,7 @@ const currentUser = require("../currentUser.json");
 
 async function handleGetProfile(req, res) {
   try {
-    const username = currentUser.username; // Ensure this matches the structure of currentUser.json
+    const username = req.params.userName || currentUser.username; // Ensure this matches the structure of currentUser.json
     console.log(`Fetching profile for username: ${username}`); // Debugging line
 
     const profileInfo = await EditProfile.findOne({ userName: username });
