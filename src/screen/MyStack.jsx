@@ -3,6 +3,7 @@ import "./MyStack.css";
 import YourPost from "../components/YourPost";
 import Library from "../components/Library";
 import { CurrentUserContext } from "../App";
+import { NavLink } from "react-router-dom";
 
 const MyStack = () => {
   const { currentUsername } = useContext(CurrentUserContext);
@@ -11,9 +12,7 @@ const MyStack = () => {
   useEffect(() => {
     const fetchStack = async () => {
       try {
-        const response = await fetch(
-          `http://localhost:8000/${currentUsername}/mystack` // Removed colon before currentUsername
-        );
+        const response = await fetch(`http://localhost:8000/${currentUsername}/mystack`);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -25,7 +24,12 @@ const MyStack = () => {
     };
 
     fetchStack();
-  }, [currentUsername]); // Added currentUsername to dependency array
+  }, [currentUsername]);
+
+  const navlinkstyle = {
+    textDecoration: "none",
+    color: "inherit",
+  };
 
   return (
     <div className="mystack">
@@ -33,7 +37,11 @@ const MyStack = () => {
       <div className="mystackpost">
         {/* Map myStack items to YourPost component */}
         {myStack.map((item, index) => (
-          <YourPost key={index} item={item} />
+          <div key={index} className="postItem">
+            <NavLink to={`/${currentUsername}/viewQuestion/${item._id}`} style={navlinkstyle}>
+              <YourPost item={item}  />
+            </NavLink>
+          </div>
         ))}
       </div>
     </div>

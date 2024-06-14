@@ -1,3 +1,5 @@
+// Home.js
+
 import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import Button from "@mui/material/Button";
@@ -32,11 +34,18 @@ const Home = () => {
     geeksforgeeksRating: "",
   });
 
+  const navlinkstyle = ({ isActive }) => {
+    return {
+      textDecoration: isActive ? "none" : "none",
+      color: isActive ? "red" : "black",
+    };
+  };
+
   useEffect(() => {
     const fetchProfile = async () => {
       try {
         const response = await fetch(`http://localhost:8000/home/${currentUsername}`);
-        console.log("Current Username:", currentUsername); //debug
+        console.log("Current Username:", currentUsername); // debug
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -250,11 +259,13 @@ const Home = () => {
             <div className="questions">
               {recentQuestions.map((question, index) => (
                 <div key={index} className="questionList">
-                  <h3>
-                    {question.question.length > 65
-                      ? `${question.question.substring(0, 65)}...`
-                      : question.question}
-                  </h3>
+                  <NavLink to={`/${currentUsername}/viewQuestion/${question._id}`} style={navlinkstyle}>
+                    <h3>
+                      {question.question.length > 65
+                        ? `${question.question.substring(0, 65)}...`
+                        : question.question}
+                    </h3>
+                  </NavLink>
                   <h4>{new Date(question.timeOfCreation).toLocaleString()}</h4>
                 </div>
               ))}

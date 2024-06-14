@@ -52,7 +52,7 @@
   background-color: rgb(238, 252, 222);
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
   margin-top: 20px;
   padding: 10px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
@@ -64,8 +64,8 @@
   width: 90%;
   display: flex;
   flex-direction: column;
-  align-items: start;
-  margin: 10px;
+ 
+ margin: 10px;
   padding: 10px;
   background-color: rgb(255, 255, 255);
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
@@ -149,11 +149,12 @@
   transition: background-color 0.2s ease;
 }
 
-.editdelete button:hover {
-  background-color: #0056b3;
-}
+
 .edityrpost {
   background-color: #007bff;
+}
+.edityrpost:hover{
+  background-color: #005dc0;
 }
 
 .deleteyrpost {
@@ -162,4 +163,11 @@
 
 .deleteyrpost:hover {
   background-color: #a32419;
+}
+.public {
+  color: #03966a; /* Green color for Public */
+}
+
+.private {
+  color: #dc3545; /* Red color for Private */
 }

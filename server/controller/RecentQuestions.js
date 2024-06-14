@@ -26,6 +26,20 @@ async function handleGetRecentQuestions(req, res) {
   }
 }
 
+async function handleGetQuestion(req, res) {
+  try {
+    const question = await UploadedQuestion.findById(req.params.id);
+    console.log(req.params.id)
+    if (!question) {
+      return res.status(404).json({ message: "Question not found" });
+    }
+    res.json(question);
+  } catch (error) {
+    res.status(500).json({ message: "Error fetching question" });
+  }
+}
+
 module.exports = {
   handleGetRecentQuestions,
+  handleGetQuestion,
 };

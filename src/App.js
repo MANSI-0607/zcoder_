@@ -11,7 +11,7 @@ import Footer from "./components/Footer";
 import Login from "./screen/Login";
 import SignUp from "./screen/SignUp";
 import EditDetails from "./screen/EditDetails";
-
+import ViewQuestion from "./screen/ViewQuestion";
 const CurrentUserContext = createContext();
 
 function App() {
@@ -49,6 +49,7 @@ const MainContent = () => {
         <Route path="/:currentUsername/explore" element={<Explore />} />
         <Route path="/:currentUsername/mystack" element={<MyStack />} />
         <Route path="/:currentUsername/edit-profile" element={<EditDetails />} />
+        <Route path="/:currentUsername/viewQuestion/:questionId" element={<ViewQuestion></ViewQuestion>} />
         <Route path="/" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
         <Route path="*" element={<Error />} />

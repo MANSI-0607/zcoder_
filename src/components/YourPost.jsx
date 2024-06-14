@@ -2,7 +2,7 @@ import React from "react";
 import { Container } from "@mui/material";
 import like from "../assets/like.svg"; // Adjust path as per your file structure
 import view from "../assets/view.svg"; // Adjust path as per your file structure
-import "./YourPost.css"
+import "../screen/MyStack.css"
 const YourPost = ({ item }) => {
   const accessColorClass = item.access === "public" ? "public" : "private";
 

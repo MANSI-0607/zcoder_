@@ -207,3 +207,8 @@ height: 45vh;
 .github:hover img {
   transform: scale(1.2);
 }
+/* Home.css */
+
+.questionList:hover{
+background-color: rgb(123, 198, 219);
+}

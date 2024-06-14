@@ -11,6 +11,7 @@ const EditProfileRouter = require("./routes/EditProfile");
 const GetProfileRouter = require("./routes/Profile");
 const GetRecentQuestionRouter = require("./routes/FetchRecentQuestions");
 const GetMyStackRouter=require("./routes/MyStack")
+const UpdateQuestion=require("./routes/UpdateQuestion")
 const { connectToMongoDB } = require("./connect");
 
 // Connect to MongoDB
@@ -39,6 +40,7 @@ app.use("/home", GetProfileRouter);
 app.use("/", UploadedQuestionRouter);
 app.use("/getRecentQuestion", GetRecentQuestionRouter);
 app.use("/:username/mystack", GetMyStackRouter);
+app.use("/updateQuestion", UpdateQuestion);
 
 app.listen(PORT, () => {
   console.log(`Server is started at PORT:${PORT}`);
