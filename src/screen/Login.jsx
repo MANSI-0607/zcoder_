@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { CurrentUserContext } from "../App"; 
+import ParticlesComponent2 from "../components/Particles2";
 
 const Login = () => {
   const { setCurrentUsername } = useContext(CurrentUserContext); 
@@ -29,58 +30,46 @@ const Login = () => {
         body: JSON.stringify(user),
       });
 
-      // if (response.ok) {
-      //   const data = await response.json();
-      //   setCurrentUsername(data.userName);
-      //   alert("Login successful!");
-      //   navigate(`/${data.userName}/edit-profile`);
-      // } else {
-      //   const data = await response.json();
-      //   alert(data.msg);
-      // }/
       if (response.ok) {
         const data = await response.json();
         const username = data.userName;
         setCurrentUsername(username);
         localStorage.setItem("currentUsername", username);
         alert("Login successful!");
-        // Check if the user's profile exists
-      // Check if the user's profile exists
-      try {
-        const profileResponse = await fetch(`http://localhost:8000/home/${username}`);
-        
-        if (profileResponse.ok) {
-          const profileData = await profileResponse.json();
-          console.log("Profile data:", profileData);
-          navigate(`/${username}/home`);
-        } else {
-          console.log("Profile not found, navigating to edit profile");
+
+        try {
+          const profileResponse = await fetch(`http://localhost:8000/home/${username}`);
+          
+          if (profileResponse.ok) {
+            const profileData = await profileResponse.json();
+            console.log("Profile data:", profileData);
+            navigate(`/${username}/home`);
+          } else {
+            console.log("Profile not found, navigating to edit profile");
+            navigate(`/${username}/edit-profile`);
+          }
+        } catch (error) {
+          console.error("Error during profile check:", error);
+          alert("Profile check failed. Please try again later.");
           navigate(`/${username}/edit-profile`);
         }
-      } catch (error) {
-        console.error("Error during profile check:", error);
-        alert("Profile check failed. Please try again later.");
-        navigate(`/${username}/edit-profile`);
+      } else {
+        const data = await response.json();
+        alert(data.msg);
       }
-    } else {
-      const data = await response.json();
-      alert(data.msg);
+    } catch (error) {
+      console.error("Error during login:", error);
+      alert("Login failed. Please try again later.");
     }
-  } catch (error) {
-    console.error("Error during login:", error);
-    alert("Login failed. Please try again later.");
-  }
-};
+  };
 
-  
-  
-  
   const handleSignup = () => {
     navigate("/");
   };
 
   return (
     <div className="login">
+      <ParticlesComponent2 className="particles-js" />
       <div className="login-container">
         <h2>Login</h2>
         <label>Username</label>

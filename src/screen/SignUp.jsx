@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./SignUp.css";
+import ParticlesComponent from "../components/Particles";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -55,6 +56,7 @@ const SignUp = () => {
 
   return (
     <div className="sign-up">
+      <ParticlesComponent className="particles-js" />
       <div className="sign-up-container">
         <h2>Sign Up</h2>
         <label>Name</label>
@@ -77,7 +79,7 @@ const SignUp = () => {
         <input
           type="text"
           name="userName"
-          value={newUser.username}
+          value={newUser.userName}
           onChange={handleChange}
           className="sign-up-input"
         />

@@ -1,86 +1,93 @@
-
-
 .sign-up {
- 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: #f0f2f5;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0f2f5;
+  overflow: hidden;
+}
 
-  }
-  
-  .sign-up-container {
-    
-    height: 80vh;
-    background: #fff;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    width: 100%;
-    text-align: center;
-  }
-  
-  .sign-up-container h2 {
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .sign-up-container label {
-    display: block;
-    text-align: left;
-    margin-bottom: 1px;
-    font-weight: bold;
-    color: #555;
-  }
-  
-  .sign-up-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  .sign-up-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    margin-top: 20px;
-  }
-  
-  .sign-up-button:hover {
-    background-color: #0056b3;
-  }
-  
-  .existing-account {
-    margin-top: 20px;
-    text-align: center;
-    color: #555;
-  }
-  
-  .login-button {
-    padding: 10px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: bold;
-    margin-left: 10px;
-  }
-  
-  .login-button:hover {
-    background-color: #218838;
-  }
-  
+.particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+
+}
+
+.sign-up-container {
+  position: relative;
+  z-index: 2;
+  background: #fff;
+  padding: 40px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.sign-up-container h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.sign-up-container label {
+  display: block;
+  text-align: left;
+  margin-bottom: 1px;
+  font-weight: bold;
+  color: #555;
+}
+
+.sign-up-input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.sign-up-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.sign-up-button:hover {
+  background-color: #0056b3;
+}
+
+.existing-account {
+  margin-top: 20px;
+  text-align: center;
+  color: #ffffff;
+  z-index: 2;
+  position: relative;
+}
+
+.login-button {
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
+.login-button:hover {
+  background-color: #218838;
+}
