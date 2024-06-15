@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Select from "react-select";
 import "./EditDetails.css";
 import { CurrentUserContext } from "../App";
@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 const EditDetails = () => {
   const { currentUsername } = useContext(CurrentUserContext);
-
   const navigate = useNavigate();
   const [editUser, setEditUser] = useState({
     firstName: "",
@@ -18,7 +17,6 @@ const EditDetails = () => {
     github: "",
     languages: [],
     selectedSkills: [],
-    profilePicture: "",
     codeforcesId: "",
     leetcodeId: "",
     codechefId: "",
@@ -49,6 +47,41 @@ const EditDetails = () => {
     // Add more skills as needed
   ];
 
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const response = await fetch(`http://localhost:8000/home/${currentUsername}`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setEditUser({
+          firstName: data.firstName,
+          lastName: data.lastName,
+          institute: data.institute,
+          gender: data.gender,
+          about: data.about,
+          linkedin: data.linkedin,
+          github: data.github,
+          languages: data.languages.map(lang => ({ value: lang, label: lang })),
+          selectedSkills: data.selectedSkills.map(skill => ({ value: skill, label: skill })),
+          codeforcesId: data.codeforcesId,
+          leetcodeId: data.leetcodeId,
+          codechefId: data.codechefId,
+          geeksforgeeksId: data.geeksforgeeksId,
+          codeforcesRating: data.codeforcesRating,
+          leetcodeRating: data.leetcodeRating,
+          codechefRating: data.codechefRating,
+          geeksforgeeksRating: data.geeksforgeeksRating,
+        });
+      } catch (error) {
+        console.error("Error fetching profile:", error);
+      }
+    };
+
+    fetchProfile();
+  }, [currentUsername]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setEditUser((prevState) => ({
@@ -71,62 +104,38 @@ const EditDetails = () => {
     }));
   };
 
-  const handleProfilePictureChange = (e) => {
-    setEditUser((prevState) => ({
-      ...prevState,
-      profilePicture: e.target.files[0],
-    }));
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const languages =
-      editUser.languages.length > 0
-        ? editUser.languages.map((lang) => lang.value)
-        : [];
-    const selectedSkills =
-      editUser.selectedSkills.length > 0
-        ? editUser.selectedSkills.map((skill) => skill.value)
-        : [];
+    const languages = editUser.languages.map(lang => lang.value);
+    const selectedSkills = editUser.selectedSkills.map(skill => skill.value);
+
     const profileData = {
       currentUsername,
-      firstName: editUser.firstName,
-      lastName: editUser.lastName,
-      institute: editUser.institute,
-      gender: editUser.gender,
-      about: editUser.about,
-      linkedin: editUser.linkedin,
-      github: editUser.github,
-      languages: languages,
-      selectedSkills: selectedSkills,
-      profilePicture: editUser.profilePicture,
-      codeforcesId: editUser.codeforcesId,
-      leetcodeId: editUser.leetcodeId,
-      codechefId: editUser.codechefId,
-      geeksforgeeksId: editUser.geeksforgeeksId,
-      codeforcesRating: editUser.codeforcesRating,
-      leetcodeRating: editUser.leetcodeRating,
-      codechefRating: editUser.codechefRating,
-      geeksforgeeksRating: editUser.geeksforgeeksRating,
+      ...editUser,
+      languages,
+      selectedSkills,
     };
 
-    //console.log(userName);
-    fetch(`http://localhost:8000/${currentUsername}/edit-profile`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(profileData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Profile updated:", data);
-        alert("Profile updated successfully!");
-        navigate(`/${currentUsername}/home`);
-      })
-      .catch((error) => {
-        console.error("Error updating profile:", error);
+    try {
+      const response = await fetch(`http://localhost:8000/${currentUsername}/edit-profile`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(profileData),
       });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log("Profile updated:", data);
+      alert("Profile updated successfully!");
+      navigate(`/${currentUsername}/home`);
+    } catch (error) {
+      console.error("Error updating profile:", error);
+    }
   };
 
   return (
@@ -149,14 +158,6 @@ const EditDetails = () => {
             name="lastName"
             value={editUser.lastName}
             onChange={handleChange}
-          />
-        </label>
-        <label>
-          Profile Picture:
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handleProfilePictureChange}
           />
         </label>
         <label>
@@ -300,7 +301,7 @@ const EditDetails = () => {
             </label>
           </div>
         </div>
-        <button type="submit">Save</button>
+        <button type="submit">Update Profile</button>
       </form>
     </div>
   );
