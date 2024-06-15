@@ -11,7 +11,7 @@
   background-color: white;
   padding: 2vh 1vw;
   height: 100%;
-  width: 30%;
+  width: 40%;
   border-radius: 2vh;
   display: flex;
   flex-direction: column;
@@ -43,6 +43,7 @@
   border-radius: 2vh;
   background-color: #d7f6f0; /* default background color */
   transition: background-color 0.3s ease; /* smooth transition */
+  font-size: 14px;
 }
 
 .CalendarCompo:hover {

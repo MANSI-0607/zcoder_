@@ -139,7 +139,7 @@ const Home = () => {
         <div className="HomeLeft">
           <div className="HomeLeft_card">
             <div className="profile_section">
-              <img src={profileData.profilePicture} alt="Profile Picture" />
+              <img src={profileData.profilePicture||"/profile.jpg"} alt="Profile Picture" />
               <h4>
                 {profileData.firstName} {profileData.lastName}
               </h4>
