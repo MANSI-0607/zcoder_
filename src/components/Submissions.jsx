@@ -1,19 +1,32 @@
 import React from "react";
-import like from '../assets/like.svg'
-import view from '../assets/view.svg'
-import comment from '../assets/comment_.png'
-const Submissions = () => {
+import like from '../assets/like.svg';
+import view from '../assets/view.svg';
+import comment from '../assets/comment_.png';
+
+const Submissions = (props) => {
+  // Format the timeOfCreation to a more readable format
+  const formatDate = (isoString) => {
+    const date = new Date(isoString);
+    return date.toLocaleString("en-US", {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+  };
+
   return (
     <div className="Submissions">
       <div className="owner">
-        <p>By:Pabitra</p>
-        <p>30.05.2024 02:05</p>
+        <p className="username">By: {props.username}</p>
+        <p className="timeOfCreation">{formatDate(props.timeOfCreation)}</p>
       </div>
-      <div className="submitted_question">Find Root of the Binary Tree Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem quos harum reprehenderit animi, tempora quas obcaecati et facere architecto sunt, nihil doloribus necessitatibus sapiente cum veniam maiores ea ut repellendus temporibus recusandae placeat? Expedita, quasi similique. Nulla hic minus laboriosam aliquam, quas perferendis provident facere!</div>
+      <div className="submitted_question">{props.question}</div>
       <div className="submitted_stats">
-        <span> <img src={view} alt="view" />23</span>
-        <span><img src={like} alt="like" /> 12</span>
-        <span><img src={comment} alt="like" /> 12</span>
+        <span><img src={view} alt="view" className="icon" /> 23</span>
+        <span><img src={like} alt="like" className="icon" /> 12</span>
+        <span><img src={comment} alt="comment" className="icon" /> 12</span>
       </div>
     </div>
   );
