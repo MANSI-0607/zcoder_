@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import CalendarCompo from "./CalendarCompo";
+import { Hourglass } from "react-loader-spinner"; // Import as named import
 
 const Calendar = () => {
   const [upcomingContests, setUpcomingContests] = useState([]);
   const [pastContests, setPastContests] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchContests = async () => {
@@ -27,6 +29,8 @@ const Calendar = () => {
         }
       } catch (error) {
         console.error("Error fetching contests:", error);
+      } finally {
+        setLoading(false); // Set loading to false after data is fetched
       }
     };
     fetchContests();
@@ -36,23 +40,47 @@ const Calendar = () => {
     <div className="Calendar">
       <div className="upcomingContest">
         <h1>Upcoming Contests</h1>
-        {upcomingContests.map((contest) => (
-          <CalendarCompo
-            key={contest.id}
-            background={"rgb(176, 217, 115)"}
-            contest={contest}
+        {loading ? (
+          <Hourglass
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="hourglass-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            colors={['#306cce', '#72a1ed']}
           />
-        ))}
+        ) : (
+          upcomingContests.map((contest) => (
+            <CalendarCompo
+              key={contest.id}
+              background={"rgb(176, 217, 115)"}
+              contest={contest}
+            />
+          ))
+        )}
       </div>
       <div className="pastContest">
         <h1>Past Contests</h1>
-        {pastContests.map((contest) => (
-          <CalendarCompo
-            key={contest.id}
-            background={"rgb(172, 172, 172)"}
-            contest={contest}
+        {loading ? (
+          <Hourglass
+            visible={true}
+            height="80"
+            width="80"
+            ariaLabel="hourglass-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            colors={['#306cce', '#72a1ed']}
           />
-        ))}
+        ) : (
+          pastContests.map((contest) => (
+            <CalendarCompo
+              key={contest.id}
+              background={"rgb(172, 172, 172)"}
+              contest={contest}
+            />
+          ))
+        )}
       </div>
     </div>
   );
