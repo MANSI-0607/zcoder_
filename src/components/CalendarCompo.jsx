@@ -2,7 +2,7 @@ import React from "react";
 
 const CalendarCompo = (props) => {
   const style = {
-    backgroundColor: props.background
+    backgroundColor: props.background,
   };
 
   const { contest } = props;
@@ -14,9 +14,11 @@ const CalendarCompo = (props) => {
 
   return (
     <div className="CalendarCompo" style={style} onClick={handleClick}>
-      <p className="contest-name">{contest.name}</p>
+      <p className="contest-name" style={{ color: "white" }}>
+        {contest.name}
+      </p>
       <p className="contest-date">{startDate.toLocaleDateString()}</p>
-      <p className="contest-time">{startDate.toLocaleTimeString()}</p>
+      <p className="contest-time" style={{fontWeight:"600"}}>{startDate.toLocaleTimeString()}</p>
     </div>
   );
 };

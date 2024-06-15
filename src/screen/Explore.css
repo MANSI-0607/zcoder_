@@ -44,6 +44,7 @@
   background-color: #d7f6f0; /* default background color */
   transition: background-color 0.3s ease; /* smooth transition */
   cursor: pointer; /* Change cursor on hover */
+  
 }
 
 .CalendarCompo:hover {

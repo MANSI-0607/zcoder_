@@ -35,7 +35,7 @@ const MyStack = () => {
     <div className="mystack">
       <Library />
       <div className="mystackpost">
-        {/* Map myStack items to YourPost component */}
+   
         {myStack.map((item, index) => (
           <div key={index} className="postItem">
             <NavLink to={`/${currentUsername}/viewQuestion/${item._id}`} style={navlinkstyle}>

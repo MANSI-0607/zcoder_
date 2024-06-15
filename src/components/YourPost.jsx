@@ -18,10 +18,7 @@ const YourPost = ({ item }) => {
   return (
     <div className="yourpost">
       <Container>
-        <span className="postdatetime">
-          {formatDate(item.timeOfCreation)}
-  
-        </span>
+        <span className="postdatetime">{formatDate(item.timeOfCreation)}</span>
         <div className="yr_ques">{item.question}</div>
         <div className="bottomyrpost">
           <div>
