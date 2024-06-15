@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import CalendarCompo from "./CalendarCompo";
 import { Hourglass } from "react-loader-spinner"; // Import as named import
 
+
 const Calendar = () => {
   const [upcomingContests, setUpcomingContests] = useState([]);
   const [pastContests, setPastContests] = useState([]);
@@ -41,15 +42,17 @@ const Calendar = () => {
       <div className="upcomingContest">
         <h1>Upcoming Contests</h1>
         {loading ? (
-          <Hourglass
-            visible={true}
-            height="80"
-            width="80"
-            ariaLabel="hourglass-loading"
-            wrapperStyle={{}}
-            wrapperClass=""
-            colors={['#306cce', '#72a1ed']}
-          />
+          <div className="loader-container">
+            <Hourglass
+              visible={true}
+              height="80"
+              width="80"
+              ariaLabel="hourglass-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+              colors={['#306cce', '#72a1ed']}
+            />
+          </div>
         ) : (
           upcomingContests.map((contest) => (
             <CalendarCompo
@@ -63,15 +66,17 @@ const Calendar = () => {
       <div className="pastContest">
         <h1>Past Contests</h1>
         {loading ? (
-          <Hourglass
-            visible={true}
-            height="80"
-            width="80"
-            ariaLabel="hourglass-loading"
-            wrapperStyle={{}}
-            wrapperClass=""
-            colors={['#306cce', '#72a1ed']}
-          />
+          <div className="loader-container">
+            <Hourglass
+              visible={true}
+              height="80"
+              width="80"
+              ariaLabel="hourglass-loading"
+              wrapperStyle={{}}
+              wrapperClass=""
+              colors={['#306cce', '#72a1ed']}
+            />
+          </div>
         ) : (
           pastContests.map((contest) => (
             <CalendarCompo
