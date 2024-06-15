@@ -14,9 +14,10 @@ const GetMyStackRouter=require("./routes/MyStack")
 const UpdateQuestion=require("./routes/UpdateQuestion")
 const GetExploreRouter=require("./routes/Explore")
 const { connectToMongoDB } = require("./connect");
-
+const mongoURI =
+  "mongodb+srv://pabitraKumar:Pabitra@cluster0.bqxhvj3.mongodb.net/goFood?retryWrites=true&w=majority&appName=Cluster0";
 // Connect to MongoDB
-connectToMongoDB("mongodb://127.0.0.1:27017/SignUp")
+connectToMongoDB(mongoURI)
   .then(() => {
     console.log("MongoDB connected");
   })
