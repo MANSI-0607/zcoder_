@@ -1,0 +1,76 @@
+/* Codelive.css */
+
+.code-runner-container {
+    display: flex;
+    height: 100vh; /* Ensure the container takes full height of the viewport */
+  }
+  
+  .left {
+    display: flex;
+    flex-direction: column;
+    gap: 15vh;
+    flex: 1; /* Take up remaining space in the flex container */
+    padding: 1rem; /* Add padding for spacing */
+    box-sizing: border-box; /* Ensure padding is included in the width/height */
+  }
+  
+  .input-container {
+    margin-bottom: 1rem; /* Add margin between input and output sections */
+  }
+  
+  textarea {
+    width: 100%;
+    height: 100%; /* Take up full height of the container */
+    resize: none;
+    border: 1px solid #ccc;
+    padding: 0.5rem;
+    box-sizing: border-box;
+  }
+  
+  .run-button {
+    margin-top: 0.5rem; /* Adjust margin for button */
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+  }
+  
+  .run-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .output-container {
+    flex: 1; /* Take remaining space in the left section */
+    padding: 1rem;
+    box-sizing: border-box;
+    overflow-y: auto; /* Enable vertical scrolling if content exceeds height */
+  }
+  
+  .output-container h3 {
+    margin-bottom: 0.5rem; /* Adjust margin for header */
+  }
+  
+  .output-container pre {
+    white-space: pre-wrap;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  .right {
+    flex: 1; /* Take up remaining space in the flex container */
+    padding: 1rem; /* Add padding for spacing */
+    box-sizing: border-box; /* Ensure padding is included in the width/height */
+  }
+  
+  .editor-container {
+    height: 100%;
+  }
+  
+  /* Ensure the Monaco Editor takes up full height and width */
+  .monaco-editor {
+    height: 100%;
+    width: 90%;
+  }
+  
