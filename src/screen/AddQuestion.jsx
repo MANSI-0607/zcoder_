@@ -84,6 +84,7 @@ const AddQuestion = () => {
           <label className="input-label">
             Write your Question:
             <textarea
+            className="inputLiveCode"
               name="question"
               value={uploadedQuestion.question}
               onChange={handleChange}
