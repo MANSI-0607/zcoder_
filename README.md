@@ -37,8 +37,10 @@ ZCoder allows users to:
    npm install
 3. Start the development server:
     ```sh
+    //To start the frontend:
     cd zcoder
     npm start
+    //To start the backend :open a new terminal
     cd server
     npm start
   
