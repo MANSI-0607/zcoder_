@@ -1,40 +1,38 @@
 const express = require("express");
 const cors = require("cors");
-const bodyParser = require("body-parser");
-const app = express();
-const PORT = 8000;
+const { connectToMongoDB } = require("./connect");
 
+// Import routers
 const SignUpRouter = require("./routes/SignUp");
 const LoginRouter = require("./routes/Login");
 const UploadedQuestionRouter = require("./routes/UploadQuestion");
 const EditProfileRouter = require("./routes/EditProfile");
 const GetProfileRouter = require("./routes/Profile");
 const GetRecentQuestionRouter = require("./routes/FetchRecentQuestions");
-const GetMyStackRouter=require("./routes/MyStack")
-const UpdateQuestion=require("./routes/UpdateQuestion")
-const GetExploreRouter=require("./routes/Explore")
-const { connectToMongoDB } = require("./connect");
-const mongoURI =
-  "mongodb+srv://pabitraKumar:Pabitra@cluster0.bqxhvj3.mongodb.net/goFood?retryWrites=true&w=majority&appName=Cluster0";
-// Connect to MongoDB
+const GetMyStackRouter = require("./routes/MyStack");
+const UpdateQuestionRouter = require("./routes/UpdateQuestion");
+const GetExploreRouter = require("./routes/Explore");
+const CodeLiveRouter = require("./routes/CodeLive");
+
+const app = express();
+const PORT = 8000;
+
+// MongoDB connection setup
+const mongoURI = "mongodb+srv://pabitraKumar:Pabitra@cluster0.bqxhvj3.mongodb.net/goFood?retryWrites=true&w=majority&appName=Cluster0";
 connectToMongoDB(mongoURI)
   .then(() => {
     console.log("MongoDB connected");
   })
   .catch((err) => {
-    console.log(err);
+    console.error("MongoDB connection error:", err);
   });
 
-// Middleware to parse URL-encoded data
+// Middleware
 app.use(express.urlencoded({ extended: false }));
-
-// Middleware to parse JSON data
 app.use(express.json());
-
-// Enable CORS for all routes
 app.use(cors());
-app.use(bodyParser.json());
 
+// Routes
 app.use("/signUp", SignUpRouter);
 app.use("/login", LoginRouter);
 app.use("/:userName/edit-profile", EditProfileRouter);
@@ -42,9 +40,11 @@ app.use("/home", GetProfileRouter);
 app.use("/", UploadedQuestionRouter);
 app.use("/getRecentQuestion", GetRecentQuestionRouter);
 app.use("/:username/mystack", GetMyStackRouter);
-app.use("/updateQuestion", UpdateQuestion);
+app.use("/updateQuestion", UpdateQuestionRouter);
 app.use("/:username/explore", GetExploreRouter);
+app.use("/run-cpp", CodeLiveRouter);
 
+// Start the server
 app.listen(PORT, () => {
-  console.log(`Server is started at PORT:${PORT}`);
+    console.log(`Server is started at PORT:${PORT}`);
 });
