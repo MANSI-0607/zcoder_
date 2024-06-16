@@ -33,6 +33,7 @@ const ExploreQuestion = () => {
       {publicQuestions.map((publicQuestion) => (
         <Submissions 
           key={publicQuestion._id} // Ensure a unique key prop for each item
+          id={publicQuestion._id}
           question={publicQuestion.question} 
           username={publicQuestion.username} 
           timeOfCreation={publicQuestion.timeOfCreation} 

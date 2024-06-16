@@ -1,9 +1,16 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import like from '../assets/like.svg';
 import view from '../assets/view.svg';
 import comment from '../assets/comment_.png';
 
 const Submissions = (props) => {
+  const navigate = useNavigate();
+
+  const handleQuestionClick = () => {
+    navigate(`/question/${props.id}`);
+  };
+
   // Format the timeOfCreation to a more readable format
   const formatDate = (isoString) => {
     const date = new Date(isoString);
@@ -17,7 +24,7 @@ const Submissions = (props) => {
   };
 
   return (
-    <div className="Submissions">
+    <div className="Submissions" onClick={handleQuestionClick}>
       <div className="owner">
         <p className="username">By: {props.username}</p>
         <p className="timeOfCreation">{formatDate(props.timeOfCreation)}</p>

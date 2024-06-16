@@ -8,7 +8,7 @@
   .left {
     display: flex;
     flex-direction: column;
-    gap: 15vh;
+    gap: 10vh;
     flex: 1; /* Take up remaining space in the flex container */
     padding: 1rem; /* Add padding for spacing */
     box-sizing: border-box; /* Ensure padding is included in the width/height */
@@ -46,6 +46,7 @@
     flex: 1; /* Take remaining space in the left section */
     padding: 1rem;
     box-sizing: border-box;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     overflow-y: auto; /* Enable vertical scrolling if content exceeds height */
   }
   
