@@ -15,7 +15,7 @@ ZCoder allows users to:
 
 - **Frontend:** React
 - **Backend:** Node.js, Express.js
-- **Database:** MongoDB Atlas 
+- **Database:** MongoDB 
 - **Styling:** CSS
 
 ## Getting Started
