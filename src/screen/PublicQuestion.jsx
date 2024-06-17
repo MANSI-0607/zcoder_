@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import Editor from "@monaco-editor/react";
 import "./PublicQuestion.css";
+import CommentSection from "../components/CommentSection";
 
 const PublicQuestion = () => {
   const { id } = useParams();
@@ -10,7 +11,9 @@ const PublicQuestion = () => {
   useEffect(() => {
     const fetchQuestionData = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/getRecentQuestion/${id}`);
+        const response = await fetch(
+          `http://localhost:8000/getRecentQuestion/${id}`
+        );
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
@@ -33,13 +36,13 @@ const PublicQuestion = () => {
   };
 
   return (
-    <div className='public-question'>
-      <div className='ques-ans'>
-        <div className='ques'>
-            <h3>Question</h3>
+    <div className="public-question">
+      <div className="ques-ans">
+        <div className="ques">
+          <h3>Question</h3>
           {questionData.question}
         </div>
-        <div className='ans'>
+        <div className="ans">
           <Editor
             value={questionData.code}
             height="100%"
@@ -51,23 +54,7 @@ const PublicQuestion = () => {
           />
         </div>
       </div>
-      {/* <div className='comments-section'>
-        <div className='comments-info'>
-          <span>Likes: {questionData.likes}</span>
-          <span>Views: {questionData.views}</span>
-        </div>
-        <div className='comments'>
-          {questionData.comments.map((comment, index) => (
-            <div key={index} className='comment'>
-              <p>{comment.text}</p>
-              <div className='reply'>
-                <input type='text' placeholder='Reply...' />
-                <button>Reply</button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div> */}
+      <CommentSection />
     </div>
   );
 };
