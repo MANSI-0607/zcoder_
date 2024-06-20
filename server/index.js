@@ -30,13 +30,7 @@ connectToMongoDB(mongoURI)
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-
-
-app.use(cors({
-  origin: 'https://your-frontend-domain.com', // Replace with your frontend domain
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods if needed
-  credentials: true, // Allow cookies to be sent with requests
-}));
+app.use(cors());
 
 // Routes
 app.use("/signUp", SignUpRouter);
