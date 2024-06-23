@@ -26,6 +26,10 @@ const MyStack = () => {
     fetchStack();
   }, [currentUsername]);
 
+  const handleDelete = (questionId) => {
+    setMyStack((prevStack) => prevStack.filter((item) => item._id !== questionId));
+  };
+
   const navlinkstyle = {
     textDecoration: "none",
     color: "inherit",
@@ -35,12 +39,9 @@ const MyStack = () => {
     <div className="mystack">
       <Library />
       <div className="mystackpost">
-   
         {myStack.map((item, index) => (
           <div key={index} className="postItem">
-            <NavLink to={`/${currentUsername}/viewQuestion/${item._id}`} style={navlinkstyle}>
-              <YourPost item={item}  />
-            </NavLink>
+            <YourPost item={item} currentUsername={currentUsername} navlinkstyle={navlinkstyle} onDelete={handleDelete} />
           </div>
         ))}
       </div>

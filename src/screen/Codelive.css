@@ -2,13 +2,13 @@
 
 .code-runner-container {
   display: flex;
-  height: 100vh; /* Ensure the container takes full height of the viewport */
+  height: 90vh; /* Ensure the container takes full height of the viewport */
 }
 
 .left {
   display: flex;
   flex-direction: column;
-  gap: 10vh;
+  gap: 0.5vh;
   flex: 1; /* Take up remaining space in the flex container */
   padding: 1rem; /* Add padding for spacing */
   box-sizing: border-box; /* Ensure padding is included in the width/height */
@@ -16,6 +16,10 @@
 
 .input-container {
   margin-bottom: 1rem; /* Add margin between input and output sections */
+}
+.input-container label{
+  font-size: 18px;
+  font-weight: 700;
 }
 
 .inputLiveCode {
@@ -45,9 +49,11 @@
 }
 
 .output-container {
+
   flex: 1; /* Take remaining space in the left section */
   padding: 1rem;
   box-sizing: border-box;
+  border:1px solid gray;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   overflow-y: auto; /* Enable vertical scrolling if content exceeds height */
 }

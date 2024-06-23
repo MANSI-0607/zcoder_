@@ -26,6 +26,8 @@ const EditDetails = () => {
     codechefRating: "",
     geeksforgeeksRating: "",
   });
+  const [profilePicture, setProfilePicture] = useState(null);
+  const [preview, setPreview] = useState(null);
 
   const languageOptions = [
     { value: "C++", label: "C++" },
@@ -34,7 +36,6 @@ const EditDetails = () => {
     { value: "Python", label: "Python" },
     { value: "Java", label: "Java" },
     { value: "Kotlin", label: "Kotlin" },
-    // Add more options for other coding languages
   ];
 
   const techSkillsOptions = [
@@ -44,7 +45,6 @@ const EditDetails = () => {
     { value: "React", label: "React" },
     { value: "ANGULAR", label: "ANGULAR" },
     { value: "FLUTTER", label: "FLUTTER" },
-    // Add more skills as needed
   ];
 
   useEffect(() => {
@@ -74,6 +74,9 @@ const EditDetails = () => {
           codechefRating: data.codechefRating,
           geeksforgeeksRating: data.geeksforgeeksRating,
         });
+        if (data.profilePicture) {
+          setPreview(`http://localhost:8000/${data.profilePicture}`);
+        }
       } catch (error) {
         console.error("Error fetching profile:", error);
       }
@@ -104,25 +107,50 @@ const EditDetails = () => {
     }));
   };
 
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setProfilePicture(file);
+
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      setPreview(reader.result);
+    };
+    reader.readAsDataURL(file);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const languages = editUser.languages.map(lang => lang.value);
     const selectedSkills = editUser.selectedSkills.map(skill => skill.value);
 
-    const profileData = {
-      currentUsername,
-      ...editUser,
-      languages,
-      selectedSkills,
-    };
+    const formData = new FormData();
+    formData.append("currentUsername", currentUsername);
+    formData.append("firstName", editUser.firstName);
+    formData.append("lastName", editUser.lastName);
+    formData.append("institute", editUser.institute);
+    formData.append("gender", editUser.gender);
+    formData.append("about", editUser.about);
+    formData.append("linkedin", editUser.linkedin);
+    formData.append("github", editUser.github);
+    formData.append("languages", JSON.stringify(languages));
+    formData.append("selectedSkills", JSON.stringify(selectedSkills));
+    formData.append("codeforcesId", editUser.codeforcesId);
+    formData.append("leetcodeId", editUser.leetcodeId);
+    formData.append("codechefId", editUser.codechefId);
+    formData.append("geeksforgeeksId", editUser.geeksforgeeksId);
+    formData.append("codeforcesRating", editUser.codeforcesRating);
+    formData.append("leetcodeRating", editUser.leetcodeRating);
+    formData.append("codechefRating", editUser.codechefRating);
+    formData.append("geeksforgeeksRating", editUser.geeksforgeeksRating);
+
+    if (profilePicture) {
+      formData.append("profilePicture", profilePicture);
+    }
 
     try {
       const response = await fetch(`http://localhost:8000/${currentUsername}/edit-profile`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(profileData),
+        body: formData,
       });
 
       if (!response.ok) {
@@ -178,7 +206,17 @@ const EditDetails = () => {
             <option value="other">Other</option>
           </select>
         </label>
+       
         <label>
+          Profile Picture:
+          <input type="file" accept="image/*" onChange={handleFileChange} />
+        </label>
+        {preview && (
+          <div>
+            <img src={preview} alt="Profile Preview" style={{ width: "100px", height: "100px" }} />
+          </div>
+        )}
+         <label>
           About (*Max Character limit: 200):
           <textarea
             name="about"
@@ -222,6 +260,7 @@ const EditDetails = () => {
             options={techSkillsOptions}
           />
         </label>
+        
         <h3>Coding Platforms</h3>
         <div className="codingsites">
           <div className="ids">

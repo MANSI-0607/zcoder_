@@ -18,7 +18,7 @@ const EditProfileSchema = new mongoose.Schema({
   },
   gender: {
     type: String,
-    required: true,
+    
   },
   about: {
     type: String,

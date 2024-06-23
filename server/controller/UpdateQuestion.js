@@ -15,8 +15,19 @@ async function handleUpdateQuestion(req, res) {
         res.status(500).json({ message: "Internal Server Error" });
       }
   }
+  async function handleDeleteQuestion(req, res) {
+    try {
+      const deletedQuestion = await UploadedQuestion.findByIdAndDelete(req.params.questionId);
+      if (!deletedQuestion) {
+        return res.status(404).json({ message: "Question not found" });
+      }
+      res.status(200).json({ message: "Question deleted successfully" });
+    } catch (error) {
+      res.status(500).json({ message: "Internal Server Error" });
+    }
+  }
   
   module.exports = {
-    handleUpdateQuestion,
+    handleUpdateQuestion,handleDeleteQuestion
   };
   

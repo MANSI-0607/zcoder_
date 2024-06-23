@@ -96,6 +96,9 @@
   padding: 8px;
   margin: 8px 0;
 }
+.yr_ques:hover{
+  border-color: black;
+}
 
 .bottomyrpost {
   display: flex;

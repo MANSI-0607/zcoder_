@@ -1,5 +1,5 @@
 const UploadedQuestion = require("../model/UploadedQuestion");
-const prettier = require("prettier");
+
 
 async function handleUploadQuestion(req, res) {
   const { question, notes, code, access } = req.body;
